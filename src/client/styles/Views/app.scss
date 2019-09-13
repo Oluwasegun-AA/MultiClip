@@ -1,0 +1,26 @@
+.top {
+  height: 5%;
+  width: 100%;
+  top: 0;
+  background-color: rgb(55, 52, 52);
+}
+
+.footer {
+  height: 5%;
+  width: 100%;
+  bottom: 0px;
+  background-color: rgb(55, 52, 52);
+}
+
+.content {
+  text-align: center;
+  margin: 10px;
+  height: 85vh;
+  position: relative;
+  background-color: rgb(198, 190, 190);
+  z-index: 1;
+  padding-left: 10%;
+  padding-right: 10%;
+  border-radius: 20%;
+  overflow: hidden;
+}
