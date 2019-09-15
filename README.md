@@ -48,6 +48,10 @@ loading . . .
 
 ## Contributors
 
+## Appreciations
+
+thanks to @satendra02 for the wonderful boilerplate used in bootstrapping the extension
+
 ## License
 ![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)
 

@@ -1,25 +1,23 @@
 {
-  "short_name": "Fidio",
-  "name": "Fidio Video manipulator",
-  "icons": [
+  "short_name": "My Extension",
+  "name": "My Extension",
+  "version": "1.0",
+  "manifest_version": 2,
+  "background": {
+    "scripts": ["app/background.js"]
+  },
+  "browser_action": {
+  },
+  "content_scripts" : [
     {
-      "src": "assets/logo.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "assets/logo.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "assets/img.png",
-      "type": "image/png",
-      "sizes": "512x512"
-    }	    
+      "matches": [ "<all_urls>" ],
+      "css": ["/static/css/app.css"],
+      "js": ["/static/js/content.js"]
+    }
   ],
-  "start_url": "/",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "web_accessible_resources":[
+    "/static/css/content.css"
+  ],
+  "permissions": ["contextMenus", "declarativeContent", "storage", "activeTab"],
+  "content_security_policy": "script-src 'self' 'sha256-GgRxrVOKNdB4LrRsVPDSbzvfdV4UqglmviH9GoBJ5jk='; object-src 'self'"
 }

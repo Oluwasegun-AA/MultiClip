@@ -3,3 +3,4 @@ coverage/
 build/
 __mocks__
 webpack.config.js
+App.test.js
