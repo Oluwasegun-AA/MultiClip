@@ -39,15 +39,14 @@ loading . . .
 > 🔃 Create a new pull request using   { loading . . . }
 
 ## Contributors
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
 <table><tr><td align="center"><a href="https://github.com/Oluwasegun-AA"><img src="https://avatars0.githubusercontent.com/u/25525765?v=4" width="100px;" alt="Adépòjù Olúwáségun"/><br /><sub><b>Adépòjù Olúwáségun</b></sub></a><br /><a href="https://github.com/Adépòjù Olúwáségun/MultiClip/issues?q=author%3AOluwasegun-AA" title="Bug reports">🐛</a> <a href="https://github.com/Adépòjù Olúwáségun/MultiClip/commits?author=Oluwasegun-AA" title="Code">💻</a> <a href="https://github.com/Adépòjù Olúwáségun/MultiClip/commits?author=Oluwasegun-AA" title="Documentation">📖</a> <a href="#maintenance-Oluwasegun-AA" title="Maintenance">🚧</a></td></tr></table>
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
-## Appreciations
-
-thanks to @satendra02 for the wonderful boilerplate used in bootstrapping the extension
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind are welcome!
 
 ## License
 ![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)
