@@ -1,0 +1,26 @@
+{
+  "projectName": "MultiClip",
+  "projectOwner": "Adépòjù Olúwáségun",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "contributors": [
+    {
+      "login": "Oluwasegun-AA",
+      "name": "Adépòjù Olúwáségun",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/25525765?v=4",
+      "profile": "https://github.com/Oluwasegun-AA",
+      "contributions": [
+        "bug",
+        "code",
+        "doc",
+        "maintenance"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7
+}
