@@ -13,10 +13,6 @@ let changeColor = document.getElementById('changeColor');
     changeColor.style.backgroundColor = data.color;
     changeColor.setAttribute('value', data.color);
   });
-
-
-
-
   //check incognito
   // function saveTabData(tab) {
   //   if (tab.incognito) {

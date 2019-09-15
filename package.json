@@ -1,12 +1,55 @@
 {
   "name": "EasyRead",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "description": "Chrome Extension to copy multiple items and selectively paste where required",
+  "main": "background.js",
   "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "author": "Adépòjù Olúwáségun",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Oluwasegun-AA/MultiClip/issues"
+  },
+  "homepage": "https://github.com/Oluwasegun-AA/MultiClip#readme",
+  "scripts": {
+    "clear": "rimraf dist build",
+    "pretty": "./node_modules/.bin/prettier --single-quote --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
+    "lint": "eslint src/**/*.js --fix",
+    "test:pre-commit": "CI=true react-scripts test --colors -u --coverage",
+    "contributors:init": "all-contributors init",
+    "contributors:add": "npx all-contributors add",
+    "contributors:generate": "npx all-contributors generate"
+  },
+
+  "husky": {
+    "hooks": {
+      "pre-push": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Oluwasegun-AA/MultiClip.git"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/cli": "7.4.4",
+    "@babel/core": "7.4.5",
+    "@babel/plugin-proposal-class-properties": "7.3.4",
+    "@babel/plugin-transform-runtime": "7.4.4",
+    "@babel/preset-env": "7.4.5",
+    "@babel/register": "7.5.5",
+    "all-contributors-cli": "6.1.2",
+    "eslint": "^6.4.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "husky": "3.0.4",
+    "lint-staged": "9.2.3",
+    "prettier": "1.18.2",
+    "rimraf": "3.0.0"
+  }
 }
