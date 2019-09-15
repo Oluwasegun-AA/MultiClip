@@ -6,20 +6,32 @@
   "author": "Adépòjù Olúwáségun",
   "default_locale": "en",
   "homepage_url": "http://www.popup.com",
+
+  "background": {
+    "scripts": ["src/app/background.js"],
+    "persistent": false
+  },
+
   "browser_action": {
     "default_icon": {
-      "16": "assets/icon.png",
-      "32": "assets/icon.png",
-      "48": "assets/icon.png",
-      "128": "assets/icon.png"
+      "16": "src/client/assets/icon.png",
+      "32": "src/client/assets/icon.png",
+      "48": "src/client/assets/icon.png",
+      "128": "src/client/assets/icon.png"
     },
+
     "default_popup": "index.html"
   },
+
+    "default_popup": "src/client/views/popup.html"
+  },
+  "options_page": "src/client/views/options.html",
+
   "icons": {
-    "16": "assets/icon.png",
-    "32": "assets/icon.png",
-    "48": "assets/icon.png",
-    "128": "assets/icon.png"
+    "16": "src/client/assets/icon.png",
+    "32": "src/client/assets/icon.png",
+    "48": "src/client/assets/icon.png",
+    "128": "src/client/assets/icon.png"
   },
   "permissions": ["contextMenus", "declarativeContent", "storage", "activeTab"],
   "offline_enabled": true,
