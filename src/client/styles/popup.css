@@ -1,0 +1,89 @@
+button {
+  height: 30px;
+  width: 30px;
+  outline: none;
+}
+
+body {
+  height: max-content;
+  max-height: 400px;
+  width: 200px;
+  padding: 0px;
+  margin: 0px;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
+  border-bottom: 2px solid #eeeeee;
+  padding: 3px 5px 3px 5px;
+  background-color: #eeeeee;
+}
+
+.body {
+  padding: 5px;
+}
+
+polygon {
+  fill: #d8d8d8 !important;
+}
+
+polygon:hover {
+  fill: #ffd055 !important;
+}
+
+.clip {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-radius: 5px;
+  border: 1px solid #eeeeee;
+}
+
+.deleteClip {
+  color: red;
+}
+
+.footer {
+  font-size: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 3px 5px 3px 5px;
+  border-top: 2px solid #eeeeee;
+  padding-top: 2px;
+}
+
+.logo,
+.favorite,
+.deleteClip,
+.clearAll,
+.bugReport,
+.history{
+  cursor: pointer;
+  color: rgb(60, 59, 59);
+  font-weight: bold;
+}
+.clearAll:hover{
+  background-color: rgb(237, 235, 235);
+}
+
+.clearAll{
+  padding: 2px ;
+  border: 1px solid rgb(155, 93, 93);
+  border-radius: 5px;
+}
+
+.prompt{
+  border: 2px dashed #b1b0b0;
+  padding: 5px;
+  border-radius: 10px;
+  text-align: center;
+  color:  #686464;
+}
+.clips > .clip{
+  /* display: none; */
+  margin-top: 3px;
+}

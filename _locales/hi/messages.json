@@ -1,0 +1,11 @@
+{
+  "name": {
+    "message": "EasyRead",
+    "description": "Extension Name"
+  },
+  "description": {
+    "message": "Makes Reading convenient and stress free",
+    "description": "extension description"
+  }
+
+}
