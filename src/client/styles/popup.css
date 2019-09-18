@@ -23,23 +23,22 @@ body {
 }
 
 .body {
-  padding: 5px;
-}
-
-polygon {
-  fill: #d8d8d8 !important;
-}
-
-polygon:hover {
-  fill: #ffd055 !important;
+  padding: 0px 5px 0px 5px;;
 }
 
 .clip {
+  overflow: hidden;
+
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   border-radius: 5px;
   border: 1px solid #eeeeee;
+  margin-top: 3px;
+  text-align: justify;
+  -webkit-box-shadow: -2px 1px 19px -1px rgba(0,0,0,0.14);
+  -moz-box-shadow: -2px 1px 19px -1px rgba(0,0,0,0.14);
+  box-shadow: -2px 1px 19px -1px rgba(0,0,0,0.14);
 }
 
 .deleteClip {
@@ -51,13 +50,12 @@ polygon:hover {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 3px 5px 3px 5px;
+  margin: 0px 5px 3px 5px;
   border-top: 2px solid #eeeeee;
   padding-top: 2px;
 }
 
 .logo,
-.favorite,
 .deleteClip,
 .clearAll,
 .bugReport,
@@ -83,7 +81,32 @@ polygon:hover {
   text-align: center;
   color:  #686464;
 }
-.clips > .clip{
-  /* display: none; */
-  margin-top: 3px;
+
+.copy {
+  font-size: 20px;
+  cursor: copy;
+  /* margin: 8px 3px; */
+  margin: 0px 3px 0px 3px;
+}
+
+.copy:hover {
+  color: #ffd055;
+}
+
+.deleteClip{
+  font-size: 6px;
+  /* margin: 8px 3px; */
+  margin: 7px 3px 0px 3px
+}
+
+.content{
+  width: 152px;
+  max-height: 30px;
+  margin: 3px;
+  cursor: copy;
+}
+
+.clips{
+  max-height: 400px;
+  overflow: scroll;
 }
