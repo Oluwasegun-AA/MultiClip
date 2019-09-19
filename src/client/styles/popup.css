@@ -110,3 +110,17 @@ body {
   max-height: 400px;
   overflow: scroll;
 }
+
+a {
+  text-decoration: none ;
+}
+a:hover
+{
+ color:white;
+ text-decoration:none;
+ cursor:pointer;
+}
+
+.hist{
+  margin-top: 2.5px;
+}
