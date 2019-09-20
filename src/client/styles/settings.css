@@ -1,0 +1,25 @@
+h5{
+  text-align: center;
+  margin: 0px;
+  color: #8c8a8a;
+  border-bottom: 1px solid rgb(218, 215, 215);
+  padding: 8px;
+}
+
+.menu{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 4px 7px 4px 7px;
+}
+
+.tag{
+  font-size: 12px;
+}
+
+select {
+  width: 100px;
+}
+.settings{
+  margin: 8px 0px 0px 
+}

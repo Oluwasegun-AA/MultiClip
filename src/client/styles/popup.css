@@ -7,7 +7,7 @@ button {
 body {
   height: max-content;
   max-height: 400px;
-  width: 200px;
+  width: 250px;
   padding: 0px;
   margin: 0px;
 }
@@ -23,7 +23,8 @@ body {
 }
 
 .body {
-  padding: 0px 5px 0px 5px;;
+  padding: 0px 5px 0px 5px;
+  ;
 }
 
 .clip {
@@ -36,9 +37,9 @@ body {
   border: 1px solid #eeeeee;
   margin-top: 3px;
   text-align: justify;
-  -webkit-box-shadow: -2px 1px 19px -1px rgba(0,0,0,0.14);
-  -moz-box-shadow: -2px 1px 19px -1px rgba(0,0,0,0.14);
-  box-shadow: -2px 1px 19px -1px rgba(0,0,0,0.14);
+  -webkit-box-shadow: -2px 1px 19px -1px rgba(0, 0, 0, 0.14);
+  -moz-box-shadow: -2px 1px 19px -1px rgba(0, 0, 0, 0.14);
+  box-shadow: -2px 1px 19px -1px rgba(0, 0, 0, 0.14);
 }
 
 .deleteClip {
@@ -59,27 +60,41 @@ body {
 .deleteClip,
 .clearAll,
 .bugReport,
-.history{
+.history {
   cursor: pointer;
   color: rgb(60, 59, 59);
   font-weight: bold;
 }
-.clearAll:hover{
+
+.clearAll:hover {
   background-color: rgb(237, 235, 235);
 }
 
-.clearAll{
-  padding: 2px ;
+.clearAll {
+  padding: 2px;
   border: 1px solid rgb(155, 93, 93);
   border-radius: 5px;
 }
 
-.prompt{
+.prompt {
   border: 2px dashed #b1b0b0;
   padding: 5px;
   border-radius: 10px;
+  color: #686464;
   text-align: center;
-  color:  #686464;
+}
+
+.clipText,
+.copyPrompt {
+  width: 100%;
+  border: none;
+  outline: none;
+  resize: none
+}
+
+.clipText{
+  display: none;
+  height:100%;
 }
 
 .copy {
@@ -93,34 +108,34 @@ body {
   color: #ffd055;
 }
 
-.deleteClip{
+.deleteClip {
   font-size: 6px;
   /* margin: 8px 3px; */
   margin: 7px 3px 0px 3px
 }
 
-.content{
+.content {
   width: 152px;
   max-height: 30px;
   margin: 3px;
   cursor: copy;
 }
 
-.clips{
+.clips {
   max-height: 400px;
   overflow: scroll;
 }
 
 a {
-  text-decoration: none ;
-}
-a:hover
-{
- color:white;
- text-decoration:none;
- cursor:pointer;
+  text-decoration: none;
 }
 
-.hist{
+a:hover {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.hist {
   margin-top: 2.5px;
 }
