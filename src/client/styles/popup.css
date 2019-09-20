@@ -1,0 +1,141 @@
+button {
+  height: 30px;
+  width: 30px;
+  outline: none;
+}
+
+body {
+  height: max-content;
+  max-height: 400px;
+  width: 250px;
+  padding: 0px;
+  margin: 0px;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
+  border-bottom: 2px solid #eeeeee;
+  padding: 3px 5px 3px 5px;
+  background-color: #eeeeee;
+}
+
+.body {
+  padding: 0px 5px 0px 5px;
+  ;
+}
+
+.clip {
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-radius: 5px;
+  border: 1px solid #eeeeee;
+  margin-top: 3px;
+  text-align: justify;
+  -webkit-box-shadow: -2px 1px 19px -1px rgba(0, 0, 0, 0.14);
+  -moz-box-shadow: -2px 1px 19px -1px rgba(0, 0, 0, 0.14);
+  box-shadow: -2px 1px 19px -1px rgba(0, 0, 0, 0.14);
+}
+
+.deleteClip {
+  color: red;
+}
+
+.footer {
+  font-size: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0px 5px 3px 5px;
+  border-top: 2px solid #eeeeee;
+  padding-top: 2px;
+}
+
+.logo,
+.deleteClip,
+.clearAll,
+.bugReport,
+.history {
+  cursor: pointer;
+  color: rgb(60, 59, 59);
+  font-weight: bold;
+}
+
+.clearAll:hover {
+  background-color: rgb(237, 235, 235);
+}
+
+.clearAll {
+  padding: 2px;
+  border: 1px solid rgb(155, 93, 93);
+  border-radius: 5px;
+}
+
+.prompt {
+  border: 2px dashed #b1b0b0;
+  padding: 5px;
+  border-radius: 10px;
+  color: #686464;
+  text-align: center;
+}
+
+.clipText,
+.copyPrompt {
+  width: 100%;
+  border: none;
+  outline: none;
+  resize: none
+}
+
+.clipText{
+  display: none;
+  height:100%;
+}
+
+.copy {
+  font-size: 20px;
+  cursor: copy;
+  /* margin: 8px 3px; */
+  margin: 0px 3px 0px 3px;
+}
+
+.copy:hover {
+  color: #ffd055;
+}
+
+.deleteClip {
+  font-size: 6px;
+  /* margin: 8px 3px; */
+  margin: 7px 3px 0px 3px
+}
+
+.content {
+  width: 152px;
+  max-height: 30px;
+  margin: 3px;
+  cursor: copy;
+}
+
+.clips {
+  max-height: 400px;
+  overflow: scroll;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.hist {
+  margin-top: 2.5px;
+}

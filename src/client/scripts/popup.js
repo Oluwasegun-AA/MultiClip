@@ -1,3 +1,5 @@
+const select = document.querySelector.bind(document);
+
 let changeColor = document.getElementById('changeColor');
 
  changeColor.onclick = function(element) {
@@ -56,3 +58,26 @@ let changeColor = document.getElementById('changeColor');
 // var app_key = "your oxford-account app key"; === e92ccc2953bcb956518a30193d94119f
 // var dict = new Dictionary(app_id, app_key);
 // dict.find("ace",function(error,data){if(error) return console.log(error); console.log(data); });
+
+
+select('.prompt').addEventListener('click', ()=>{
+  console.log('hello')
+  const instruction = select('.copyPrompt');
+  const editor = select('.clipText')
+  instruction.style.display = 'none';
+  editor.style.display = 'block';
+  editor.focus();
+})
+
+
+select('.clipText').addEventListener('keypress', (e)=>{
+  const {keyCode, shiftKey} = e;
+  console.log(e)
+  const editor = select('.clipText')
+  if (keyCode === 13 && (shiftKey !== true)) {
+    e.preventDefault();
+   const content = editor.value;
+   alert(content)
+   editor.value = '';
+  }
+});
