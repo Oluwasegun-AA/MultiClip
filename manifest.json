@@ -26,7 +26,7 @@
     "48": "src/client/assets/icon.png",
     "128": "src/client/assets/icon.png"
   },
-  "permissions": ["contextMenus", "declarativeContent", "storage", "activeTab"],
+  "permissions": ["tabs","contextMenus", "clipboardWrite", "clipboardRead", "declarativeContent", "storage", "<all_urls>"],
   "offline_enabled": true,
   "commands": {
     "_execute_page_action": {
