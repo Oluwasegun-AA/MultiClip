@@ -57,7 +57,6 @@ class MenuClickManager {
           ...items['clips'],
           [Object.keys(items['clips']).length + 1]: selectionText,
         };
-        //  const clips = [items['clips']].concat([selectionText]);
         chrome.storage.sync.set({ clips: clips });
       } else {
         chrome.storage.sync.set({ clips: { 1: selectionText } });
