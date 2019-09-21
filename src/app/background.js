@@ -1,131 +1,102 @@
-chrome.runtime.onInstalled.addListener(()=>{
-  chrome.storage.sync.set({ settings: "#3aa757" }, ()=>{
-    console.log("The color is green.");
+const defaultSettings = {
+  delay: 7,
+  theme: 'light',
+};
+
+chrome.runtime.onInstalled.addListener(() => {
+  chrome.storage.sync.get('clips', item => {
+    const memoryLength = Object.keys(item).length;
+    const badge =
+      memoryLength > 0 && item['clips']
+        ? chrome.browserAction.setBadgeText({
+            text: `${Object.keys(item['clips']).length}`,
+          })
+        : chrome.browserAction.setBadgeText({ text: '' });
   });
-
-  // const chromeDeveloperRule = {
-  //   conditions: [
-  //     new chrome.declarativeContent.PageStateMatcher({
-  //       pageUrl: { hostEquals: "developer.chrome.com" }
-  //     })
-  //   ],
-  //   actions: [new chrome.declarativeContent.ShowPageAction()]
-  // };
-
-  // chrome.declarativeContent.onPageChanged.removeRules(undefined, ()=>{
-  //   chrome.declarativeContent.onPageChanged.addRules([chromeDeveloperRule]);
-  // });
-  chrome.browserAction.setBadgeText({text: '1'});
-  chrome.browserAction.setBadgeBackgroundColor({color: '#4688F1'});
-});
-
-/// context menu
-const genericOnClick=(info, tab) =>{
-  console.log(`item  ${info.menuItemId} was clicked`);
-  console.log(`info: ${JSON.stringify(info)}`);
-  console.log(`tab: ${JSON.stringify(tab)}`);
-}
-
-// Create one test item for each context type.
-const contexts = [
-  "page_action",
-  "browser_action",
-  "frame",
-  "page",
-  "selection",
-  "link",
-  "editable",
-  "image",
-  "video",
-  "audio"
-];
-let a = 0;
-for (let i in contexts) {
-  a += 1;
-  const context = contexts[i];
-  const title = `Test ${context} menu item`;
-  const id = chrome.contextMenus.create({
-    id: `${a}`,
-    title: title,
-    contexts: [context]
+  chrome.storage.sync.get('settings', item => {
+    if (Object.keys(item).length === 0)
+      chrome.storage.sync.set({ settings: defaultSettings });
   });
+  chrome.browserAction.setBadgeBackgroundColor({ color: '#4688F1' });
+  chrome.storage.onChanged.addListener(() => {
+    chrome.runtime.reload();
+  });
+});
+
+// Create contextMenus
+chrome.contextMenus.create({
+  id: 'selection',
+  title: 'Copy to MultiClip',
+  contexts: ['selection', 'link', 'image'],
+});
+chrome.contextMenus.create({
+  id: 'page',
+  title: 'About MultiClip',
+  contexts: ['page', 'browser_action'],
+});
+
+chrome.contextMenus.create({
+  id: 'clearClippedItems',
+  title: 'Clear Clipped Items',
+  contexts: ['page', 'browser_action'],
+});
+
+// attach listeners
+chrome.contextMenus.onClicked.addListener((info, tab) => {
+  const { menuItemId } = info;
+  MenuClickManager[menuItemId](info, tab);
+});
+
+class MenuClickManager {
+  static selection = info => {
+    const { selectionText } = info;
+    chrome.storage.sync.get('clips', items => {
+      console.log('here', items['clips']);
+      if (typeof items['clips'] === 'object') {
+        const clips = {
+          ...items['clips'],
+          [Object.keys(items['clips']).length + 1]: selectionText,
+        };
+        chrome.storage.sync.set({ clips: clips });
+      } else {
+        chrome.storage.sync.set({ clips: { 1: selectionText } });
+      }
+    });
+  };
+  static page = () => {
+    console.log('heloooooo');
+  };
+  static lightTheme = () => {
+    return chrome.storage.sync.get('settings', item => {
+      let settings = { ...item, theme: 'light' };
+      chrome.storage.sync.set({ settings: settings });
+    });
+  };
+  static darkTheme = () => {
+    return chrome.storage.sync.get('settings', item => {
+      let settings = { ...item, theme: 'dark' };
+      chrome.storage.sync.set({ settings: settings });
+    });
+  };
+  static deleteItems = () => {};
+  static clearClippedItems = () => {
+    return chrome.storage.sync.remove('clips');
+  };
 }
 
-
-
-// Create a parent item and two children.
-const parent = chrome.contextMenus.create({
-  id: "b",
-  title: "Test parent item"
-});
-chrome.contextMenus.create({ id: "c", title: "First Child", parentId: parent });
-chrome.contextMenus.create({
-  id: "d",
-  title: "Second Child",
-  parentId: parent
-});
-
-
-
-// Create some radio items.
-const radioOnClick=(info, tab)=>{
-  console.log(
-    `radio item ${info.menuItemId} was clicked (previous checked state was ${info.wasChecked})`
-  );
+function updateClipboard(newClip) {
+  // window.focus();
+  console.log(document.hasFocus());
+  navigator.clipboard
+    .writeText(newClip)
+    .then(() => {
+      console.log('Text copied.');
+    })
+    .catch(e => {
+      console.log('Failed to copy text.', e);
+    });
 }
-chrome.contextMenus.create({
-  id: "e",
-  title: "Radio 1",
-  type: "radio"
-});
-chrome.contextMenus.create({
-  id: "f",
-  title: "Radio 2",
-  type: "radio"
-});
 
-
-
-// Create some checkbox items.
-const checkboxOnClick=(info, tab)=>{
-  console.log(JSON.stringify(info));
-  console.log(
-    `checkbox item ${info.menuItemId} was clicked, state is now: " 
-      ${info.checked} (previous state was ${info.wasChecked})`
-  );
-}
-chrome.contextMenus.create({
-  id: "g",
-  title: "Checkbox1",
-  type: "checkbox"
-});
-chrome.contextMenus.create({
-  id: "h",
-  title: "Checkbox2",
-  type: "checkbox"
-});
-
-
-// attaching listeners
-chrome.contextMenus.onClicked.addListener((info, tab)=>{
-  if (
-    info.menuItemId === "1" ||
-    "2" ||
-    "3" ||
-    "4" ||
-    "5" ||
-    "6" ||
-    "7" ||
-    "a" ||
-    "b" ||
-    "c" ||
-    "d"
-  ) {
-    genericOnClick(info, tab);
-  } else if (info.menuItemId === "g" || "h") {
-    checkboxOnClick(info, tab);
-  } else {
-    radioOnClick(info, tab);
-  }
-});
-
+//document.execCommand("paste")
+// navigator.clipboard.readText().then(text => outputElem.innerText = text);  - readtext from clipboard
+//chrome.clipboard.onClipboardDataChanged.addListener(function callback)
