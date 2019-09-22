@@ -99,8 +99,7 @@ body {
 
 .copy {
   font-size: 20px;
-  cursor: copy;
-  /* margin: 8px 3px; */
+  cursor: pointer;
   margin: 0px 3px 0px 3px;
 }
 
@@ -110,15 +109,15 @@ body {
 
 .deleteClip {
   font-size: 6px;
-  /* margin: 8px 3px; */
-  margin: 7px 3px 0px 3px
+  margin: 7px 3px 0px 3px;
 }
 
 .content {
-  width: 152px;
+  width: 200px;
   max-height: 30px;
   margin: 3px;
   cursor: copy;
+  overflow-wrap: break-word;
 }
 
 .clips {
@@ -138,4 +137,24 @@ a:hover {
 
 .hist {
   margin-top: 2.5px;
+}
+
+.emptyPrompt{
+  display: none;
+}
+
+.hint {
+  min-width: 120px;
+  background-color: rgb(131, 117, 117);
+  color: #fff;
+  padding: 5px 0;
+  height: 60px;
+  overflow: scroll;
+  overflow-wrap: break-word;
+  padding: 10px 8px 10px 10px;
+}
+
+.hintText{
+  color: #a19e9e;
+  text-align: center;
 }
