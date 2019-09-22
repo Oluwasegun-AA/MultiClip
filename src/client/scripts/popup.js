@@ -89,7 +89,7 @@ singleClip.addEventListener('mouseover', e => {
   if (e.target.className === 'content') {
     hintText.style.display = 'none';
     text.style.display = 'block';
-    text.innerHTML = e.target.innerText;
+    text.innerHTML = e.target.innerText.trim();
   }
 });
 singleClip.addEventListener('mouseout', e => {
@@ -145,10 +145,10 @@ const setEmptyView = () => {
 singleClip.addEventListener('click', e => {
   const target = e.target.className;
   if (e.target.className === 'copy' || 'content') {
-    if (target === content) {
-      return copyToClipBoard(e.target.innerText);
+    if (target === 'content') {
+      return copyToClipBoard(e.target.innerHTML.trim());
     }
-    copyToClipBoard(e.target.nextElementSibling.innerHTML);
+    copyToClipBoard(e.target.nextElementSibling.innerHTML.trim());
   }
 });
 
