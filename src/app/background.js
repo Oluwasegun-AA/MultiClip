@@ -19,7 +19,7 @@ chrome.runtime.onInstalled.addListener(() => {
   });
   chrome.browserAction.setBadgeBackgroundColor({ color: '#4688F1' });
   chrome.storage.onChanged.addListener(() => {
-    chrome.runtime.reload();
+    // chrome.runtime.reload();
   });
 });
 
