@@ -25,9 +25,7 @@ chrome.runtime.onInstalled.addListener(() => {
     // chrome.runtime.reload();
   });
 
-  chrome.commands.onCommand.addListener(command=>{
-    console.log(command)
-    });
+  
 });
 
 // Create contextMenus
