@@ -56,6 +56,7 @@ body {
   padding-top: 2px;
 }
 
+.restoreDefault,
 .logo,
 .deleteClip,
 .clearAll,
@@ -66,11 +67,13 @@ body {
   font-weight: bold;
 }
 
+.restoreDefault:hover,
 .clearAll:hover {
   background-color: rgb(237, 235, 235);
 }
 
-.clearAll {
+.clearAll,
+.restoreDefault {
   padding: 2px;
   border: 1px solid rgb(155, 93, 93);
   border-radius: 5px;

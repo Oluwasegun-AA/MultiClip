@@ -10,6 +10,7 @@ const copyPrompt = select('.copyPrompt');
 const hintText = select('.hintText');
 const text = select('.text');
 const copy = select('.copy');
+const bugReport = select('.bugReport');
 
 chrome.storage.sync.get('clips', items => {
   if (!items['clips'] || Object.keys(items['clips']).length === 0) {
@@ -161,6 +162,10 @@ const copyToClipBoard = data => {
     });
 };
 
+bugReport.addEventListener('click', () => {
+  const URL = 'https://github.com/Oluwasegun-AA/MultiClip/issues';
+  chrome.tabs.create({ url: URL });
+});
 //dark mode
 // function click(e) {
 //   chrome.tabs.executeScript(null,

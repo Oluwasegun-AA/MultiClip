@@ -5,9 +5,10 @@ const theme = select('#theme');
 const autoSave = select('#autoSave');
 const saveBtn = select('.saveButton');
 const saveDiv = select('.saveDiv');
+const restoreDefault = select('.restoreDefault');
+const bugReport = select('.bugReport');
 
 chrome.storage.sync.get('settings', items => {
-  console.log(items['settings']);
   initializeValues(items['settings']);
 });
 
@@ -41,4 +42,18 @@ selectAll('select').forEach(select => {
   select.addEventListener('change', () => {
     saveDiv.style.display = 'block';
   });
+});
+
+restoreDefault.addEventListener('click', () => {
+  const defaultSettings = {
+    delay: 7,
+    theme: 'light',
+    autoSave: 'no',
+  };
+  initializeValues(defaultSettings);
+});
+
+bugReport.addEventListener('click', () => {
+  const URL = 'https://github.com/Oluwasegun-AA/MultiClip/issues';
+  chrome.tabs.create({ url: URL });
 });
