@@ -13,10 +13,10 @@ const copy = select('.copy');
 
 chrome.storage.sync.get('clips', items => {
   if (!items['clips'] || Object.keys(items['clips']).length === 0) {
-    showBadge('');
     emptyPrompt.style.display = 'block';
     clearAll.style.visibility = 'hidden';
     hint.style.display = 'none';
+    showBadge('');
   } else {
     const memoryLength = Object.keys(items['clips']).length;
     addClips(items['clips']);
