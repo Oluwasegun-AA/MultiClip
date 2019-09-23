@@ -7,13 +7,22 @@ const saveBtn = select('.saveButton');
 const saveDiv = select('.saveDiv');
 const restoreDefault = select('.restoreDefault');
 const bugReport = select('.bugReport');
+const documentBody = select('body');
+const footer = select('.footer');
+const elements = selectAll('.bugReport, .restoreDefault, .backBtn, .settings, .tag');
+const footerWithHeader = selectAll('.footer, .header');
 
 chrome.storage.sync.get('settings', items => {
   initializeValues(items['settings']);
+  initializeTheme(items['settings'].theme)
 });
 
 saveBtn.addEventListener('click', e => {
-  chrome.storage.sync.set({ settings: getNewSettings() });
+  chrome.storage.sync.set({ settings: getNewSettings() }, (item) => {
+    chrome.storage.sync.get('settings', items => {
+      initializeTheme(items['settings'].theme)
+    });
+  });
   saveDiv.style.display = 'none';
 });
 
@@ -24,7 +33,7 @@ const getNewSettings = () => {
   const selectedTheme = theme.selectedIndex;
   const autoSaveOptions = autoSave.options;
   const selectedAutoSave = autoSave.selectedIndex;
-  const newDelay = parseInt(delayOptions[selectedDelay].value)
+  const newDelay = parseInt(delayOptions[selectedDelay].value);
   const newSettings = {
     date: newDelay > 0 ? new Date().getUTCDay() : '',
     delay: newDelay,
@@ -32,6 +41,31 @@ const getNewSettings = () => {
     autoSave: autoSaveOptions[selectedAutoSave].value,
   };
   return newSettings;
+};
+
+const initializeTheme = theme => {
+  if (theme === 'dark') {
+    documentBody.style.backgroundColor = '#2f2d2d'
+    documentBody.style.color = '#d6d3d3'
+    footerWithHeader.forEach((item)=>{
+      item.style.backgroundColor = '#2f2d2d'
+    })
+    elements.forEach((view)=>{
+      view.style.backgroundColor = '#2f2d2d'
+      view.style.border = 'none'
+      view.style.color = '#d6d3d3'
+    })
+  }else{
+    documentBody.style.backgroundColor = 'white';
+    documentBody.style.color = 'black';
+    footerWithHeader.forEach((item)=>{
+      item.style.backgroundColor = 'white'
+    })
+    elements.forEach((view)=>{
+      view.style.backgroundColor = 'white'
+      view.style.color = 'black'
+    })
+  }
 };
 
 const initializeValues = values => {

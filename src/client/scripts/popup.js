@@ -1,4 +1,5 @@
 const select = document.querySelector.bind(document);
+const selectAll = document.querySelectorAll.bind(document);
 
 const emptyPrompt = select('.emptyPrompt');
 const clearAll = select('.clearAll');
@@ -11,6 +12,9 @@ const hintText = select('.hintText');
 const text = select('.text');
 const copy = select('.copy');
 const bugReport = select('.bugReport');
+const documentBody = select('body');
+const elements = selectAll('.bugReport, .clearAll, .emptyPrompt, .copyPrompt, .logo, .settings');
+const footerWithHeader = selectAll('.footer, .header');
 
 chrome.storage.sync.get('clips', items => {
   if (!items['clips'] || Object.keys(items['clips']).length === 0) {
@@ -26,7 +30,8 @@ chrome.storage.sync.get('clips', items => {
 });
 
 chrome.storage.sync.get('settings', items => {
-  const { delay, date } = items['settings'];
+  const { delay, date, theme } = items['settings'];
+  initializeTheme(theme);
   const thisDay = new Date().getUTCDay();
   if (delay !== 0 && thisDay !== date) {
     if (thisDay < date) {
@@ -39,6 +44,21 @@ chrome.storage.sync.get('settings', items => {
     }
   }
 });
+
+const initializeTheme=(theme)=>{
+  if(theme === 'dark'){
+    documentBody.style.backgroundColor = '#2f2d2d'
+    footerWithHeader.forEach((item)=>{
+      item.style.backgroundColor = '#2f2d2d'
+    })
+    elements.forEach((view)=>{
+      view.style.backgroundColor = '#2f2d2d'
+      view.style.border = 'none'
+      view.style.color = '#d6d3d3'
+    })
+    documentBody.style.color = '#d6d3d3'
+  }
+}
 
 const clearOnSetDate = (delay, datePassed) => {
   if (datePassed >= delay) {

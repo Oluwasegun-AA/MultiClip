@@ -10,7 +10,7 @@ h5{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 4px 7px 4px 7px;
+  margin: 4px 2px 4px 2px;
 }
 
 .tag{
@@ -21,7 +21,7 @@ select {
   width: 100px;
 }
 .settings{
-  margin: 8px 0px 0px 
+  margin: 8px 0px 0px 0px;
 }
 
 button {
