@@ -23,3 +23,26 @@ select {
 .settings{
   margin: 8px 0px 0px 
 }
+
+button {
+  border-radius: 4px;
+  width: max-content;
+  outline: none;
+  text-align: center;
+}
+.saveDiv{
+  display: none;
+  text-align: center;
+  background-color: rgb(233, 233, 233);
+}
+
+.saveButton{
+  height: 20px;
+  margin: 5px 0px 3px 0px;
+  background-color: rgb(237, 235, 235);
+}
+
+.saveButton:hover{
+  background-color: white;
+  border: 1px solid rgb(238, 209, 209);
+}

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="../scripts/popup.js" defer></script>
+    <script src="../scripts/settings.js" defer></script>
     <link rel="stylesheet" href="../styles/popup.css" />
     <link rel="stylesheet" href="../styles/settings.css" />
   </head>
@@ -15,38 +15,41 @@
     </div>
     <!-- <button id="changeColor"></button> -->
     <div class="body">
+        <noscript>This Extension requires JavaScript be available and enabled to function properly</noscript>
       <h5>Settings</h5>
       <div class="settings">
         <div class="menu">
           <span class="tag">Clear Clipboard After:</span>
-          <select disabled name="" id="">
-            <option value="">1 day</option>
-            <option value="">2 days</option>
-            <option value="">3 days</option>
-            <option value="">4 days</option>
-            <option value="">5 days</option>
-            <option value="">6 days</option>
-            <option value="">7 days</option>
-            <option selected value="">Never</option>
+          <select id="delay">
+            <option value="1">1 day</option>
+            <option value="2">2 days</option>
+            <option value="3">3 days</option>
+            <option value="4">4 days</option>
+            <option value="5">5 days</option>
+            <option value="6">6 days</option>
+            <option value="7">7 days</option>
+            <option selected value="0">Never</option>
           </select>
         </div>
         <div class="menu">
             <span class="tag">Theme:</span>
-            <select  disabled name="" id="">
-              <option value="">Dark</option>
-              <option selected value="">Light</option>
-              <option value="">None</option>
+            <select id="theme">
+              <option value="dark">Dark</option>
+              <option selected value="light">Light</option>
             </select>
           </div>
       </div>
         <div class="menu">
             <span class="tag">AutoSave on Copy</span>
-            <select disabled name="" id="">
-              <option value="">Yes</option>
-              <option selected value="">No</option>
+            <select id="autoSave">
+              <option value="yes">Yes</option>
+              <option selected value="no">No</option>
             </select>
           </div>
       </div>
+    </div>
+    <div class="saveDiv">
+      <button class="saveButton">Save</button>
     </div>
     <div class="footer">
       <span class="clearAll"> Default Settings </span>

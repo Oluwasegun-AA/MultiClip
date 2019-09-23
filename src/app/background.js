@@ -1,6 +1,7 @@
 const defaultSettings = {
   delay: 7,
   theme: 'light',
+  autoSave: 'no'
 };
 
 chrome.runtime.onInstalled.addListener(() => {
@@ -68,13 +69,13 @@ class MenuClickManager {
   };
   static lightTheme = () => {
     return chrome.storage.sync.get('settings', item => {
-      let settings = { ...item, theme: 'light' };
+      let settings = { ...items['settings'], theme: 'light' };
       chrome.storage.sync.set({ settings: settings });
     });
   };
   static darkTheme = () => {
     return chrome.storage.sync.get('settings', item => {
-      let settings = { ...item, theme: 'dark' };
+      let settings = { ...items['settings'], theme: 'dark' };
       chrome.storage.sync.set({ settings: settings });
     });
   };
