@@ -24,8 +24,10 @@ const getNewSettings = () => {
   const selectedTheme = theme.selectedIndex;
   const autoSaveOptions = autoSave.options;
   const selectedAutoSave = autoSave.selectedIndex;
+  const newDelay = parseInt(delayOptions[selectedDelay].value)
   const newSettings = {
-    delay: parseInt(delayOptions[selectedDelay].value),
+    date: newDelay > 0 ? new Date().getUTCDay() : '',
+    delay: newDelay,
     theme: themeOptions[selectedTheme].value,
     autoSave: autoSaveOptions[selectedAutoSave].value,
   };
@@ -51,6 +53,7 @@ restoreDefault.addEventListener('click', () => {
     autoSave: 'no',
   };
   initializeValues(defaultSettings);
+  saveDiv.style.display = 'block';
 });
 
 bugReport.addEventListener('click', () => {

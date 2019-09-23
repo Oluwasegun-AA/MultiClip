@@ -25,7 +25,30 @@ chrome.storage.sync.get('clips', items => {
   }
 });
 
-chrome.storage.sync.get('settings', items => {});
+chrome.storage.sync.get('settings', items => {
+  const { delay, date } = items['settings'];
+  const thisDay = new Date().getUTCDay();
+  if (delay !== 0 && thisDay !== date) {
+    if (thisDay < date) {
+      const dateDiff = Math.abs(thisDay - date);
+      const datePassed = date - dateDiff;
+      clearOnSetDate(delay, datePassed);
+    } else {
+      const datePassed = thisDay - date;
+      clearOnSetDate(delay, datePassed);
+    }
+  }
+});
+
+const clearOnSetDate = (delay, datePassed) => {
+  if (datePassed >= delay) {
+    chrome.storage.sync.set({
+      settings: { ...items['settings'], date: new Date().getUTCDay() },
+    });
+    chrome.storage.sync.remove('clips');
+    setEmptyView();
+  }
+};
 
 select('.prompt').addEventListener('click', () => {
   console.log('hello');
@@ -84,7 +107,6 @@ const addClips = clips => {
   });
   clipSection.innerHTML = data;
 };
-
 
 singleClip.addEventListener('mouseover', e => {
   if (e.target.className === 'content') {
@@ -166,6 +188,7 @@ bugReport.addEventListener('click', () => {
   const URL = 'https://github.com/Oluwasegun-AA/MultiClip/issues';
   chrome.tabs.create({ url: URL });
 });
+
 //dark mode
 // function click(e) {
 //   chrome.tabs.executeScript(null,

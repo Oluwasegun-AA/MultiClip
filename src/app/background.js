@@ -1,4 +1,5 @@
 const defaultSettings = {
+  date: new Date().getUTCDay(),
   delay: 7,
   theme: 'light',
   autoSave: 'no'
@@ -18,6 +19,7 @@ chrome.runtime.onInstalled.addListener(() => {
     if (Object.keys(item).length === 0)
       chrome.storage.sync.set({ settings: defaultSettings });
   });
+  
   chrome.browserAction.setBadgeBackgroundColor({ color: '#4688F1' });
   chrome.storage.onChanged.addListener(() => {
     // chrome.runtime.reload();
