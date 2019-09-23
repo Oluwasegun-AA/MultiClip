@@ -2,6 +2,7 @@ const select = document.querySelector.bind(document);
 const selectAll = document.querySelectorAll.bind(document);
 
 const emptyPrompt = select('.emptyPrompt');
+const logo = select('.logo');
 const clearAll = select('.clearAll');
 const manualText = select('.clipText');
 const clipSection = select('.clips');
@@ -209,20 +210,8 @@ bugReport.addEventListener('click', () => {
   chrome.tabs.create({ url: URL });
 });
 
-//dark mode
-// function click(e) {
-//   chrome.tabs.executeScript(null,
-//       {code:"document.body.style.backgroundColor='" + e.target.id + "'"});
-//   window.close();
-// }
-// document.addEventListener('DOMContentLoaded', function () {
-//   var divs = document.querySelectorAll('div');
-//   for (var i = 0; i < divs.length; i++) {
-//     divs[i].addEventListener('click', click);
-//   }
-// });
+logo.addEventListener('click', () => {
+  const URL = 'https://github.com/Oluwasegun-AA/MultiClip';
+  chrome.tabs.create({ url: URL });
+});
 
-// on command recieved
-// chrome.commands.onCommand.addListener(function(command) {
-//   console.log('onCommand event received for message: ', command);
-// });

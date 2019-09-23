@@ -24,6 +24,10 @@ chrome.runtime.onInstalled.addListener(() => {
   chrome.storage.onChanged.addListener(() => {
     // chrome.runtime.reload();
   });
+
+  chrome.commands.onCommand.addListener(command=>{
+    console.log(command)
+    });
 });
 
 // Create contextMenus
@@ -99,7 +103,3 @@ function updateClipboard(newClip) {
       console.log('Failed to copy text.', e);
     });
 }
-
-//document.execCommand("paste")
-// navigator.clipboard.readText().then(text => outputElem.innerText = text);  - readtext from clipboard
-//chrome.clipboard.onClipboardDataChanged.addListener(function callback)

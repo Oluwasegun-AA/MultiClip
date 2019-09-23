@@ -37,13 +37,19 @@
   ],
   "offline_enabled": true,
   "commands": {
-    "_execute_page_action": {
+    "_execute_browser_action": {
       "suggested_key": {
-        "default": "Ctrl+Shift+E",
-        "mac": "Command+E"
+        "windows": "Ctrl+M",
+        "mac": "Command+M"
       },
-      "description": "Toggle EasyRead",
-      "global": false
+      "description": "Toggle EasyRead"
+    },
+    "add_clips": {
+      "suggested_key": {
+        "windows": "Ctrl+C",
+        "mac": "Command+C"
+      },
+      "description": "add copied clips to clipboard"
     }
   }
 }
