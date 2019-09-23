@@ -1,4 +1,5 @@
 const defaultSettings = {
+  date: new Date().getUTCDay(),
   delay: 7,
   theme: 'light',
   autoSave: 'no'
@@ -18,10 +19,15 @@ chrome.runtime.onInstalled.addListener(() => {
     if (Object.keys(item).length === 0)
       chrome.storage.sync.set({ settings: defaultSettings });
   });
+  
   chrome.browserAction.setBadgeBackgroundColor({ color: '#4688F1' });
   chrome.storage.onChanged.addListener(() => {
     // chrome.runtime.reload();
   });
+
+  chrome.commands.onCommand.addListener(command=>{
+    console.log(command)
+    });
 });
 
 // Create contextMenus
@@ -97,7 +103,3 @@ function updateClipboard(newClip) {
       console.log('Failed to copy text.', e);
     });
 }
-
-//document.execCommand("paste")
-// navigator.clipboard.readText().then(text => outputElem.innerText = text);  - readtext from clipboard
-//chrome.clipboard.onClipboardDataChanged.addListener(function callback)

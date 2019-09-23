@@ -17,7 +17,7 @@ body {
   flex-direction: row;
   justify-content: space-between;
   text-align: center;
-  border-bottom: 2px solid #eeeeee;
+  border-bottom: 1px solid #eeeeee;
   padding: 3px 5px 3px 5px;
   background-color: #eeeeee;
 }
@@ -51,26 +51,30 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 0px 5px 3px 5px;
+  padding: 0px 5px 3px 5px;
   border-top: 2px solid #eeeeee;
   padding-top: 2px;
 }
 
+.restoreDefault,
 .logo,
+.backBtn,
 .deleteClip,
 .clearAll,
 .bugReport,
-.history {
+.settings {
   cursor: pointer;
   color: rgb(60, 59, 59);
   font-weight: bold;
 }
 
+.restoreDefault:hover,
 .clearAll:hover {
   background-color: rgb(237, 235, 235);
 }
 
-.clearAll {
+.clearAll,
+.restoreDefault {
   padding: 2px;
   border: 1px solid rgb(155, 93, 93);
   border-radius: 5px;
@@ -93,6 +97,7 @@ body {
 }
 
 .clipText{
+  border-radius: 5px;
   display: none;
   height:100%;
 }

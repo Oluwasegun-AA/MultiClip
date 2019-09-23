@@ -1,6 +1,8 @@
 const select = document.querySelector.bind(document);
+const selectAll = document.querySelectorAll.bind(document);
 
 const emptyPrompt = select('.emptyPrompt');
+const logo = select('.logo');
 const clearAll = select('.clearAll');
 const manualText = select('.clipText');
 const clipSection = select('.clips');
@@ -10,6 +12,10 @@ const copyPrompt = select('.copyPrompt');
 const hintText = select('.hintText');
 const text = select('.text');
 const copy = select('.copy');
+const bugReport = select('.bugReport');
+const documentBody = select('body');
+const elements = selectAll('.bugReport, .clearAll, .emptyPrompt, .copyPrompt, .logo, .settings');
+const footerWithHeader = selectAll('.footer, .header');
 
 chrome.storage.sync.get('clips', items => {
   if (!items['clips'] || Object.keys(items['clips']).length === 0) {
@@ -24,7 +30,46 @@ chrome.storage.sync.get('clips', items => {
   }
 });
 
-chrome.storage.sync.get('settings', items => {});
+chrome.storage.sync.get('settings', items => {
+  const { delay, date, theme } = items['settings'];
+  initializeTheme(theme);
+  const thisDay = new Date().getUTCDay();
+  if (delay !== 0 && thisDay !== date) {
+    if (thisDay < date) {
+      const dateDiff = Math.abs(thisDay - date);
+      const datePassed = date - dateDiff;
+      clearOnSetDate(delay, datePassed);
+    } else {
+      const datePassed = thisDay - date;
+      clearOnSetDate(delay, datePassed);
+    }
+  }
+});
+
+const initializeTheme=(theme)=>{
+  if(theme === 'dark'){
+    documentBody.style.backgroundColor = '#2f2d2d'
+    footerWithHeader.forEach((item)=>{
+      item.style.backgroundColor = '#2f2d2d'
+    })
+    elements.forEach((view)=>{
+      view.style.backgroundColor = '#2f2d2d'
+      view.style.border = 'none'
+      view.style.color = '#d6d3d3'
+    })
+    documentBody.style.color = '#d6d3d3'
+  }
+}
+
+const clearOnSetDate = (delay, datePassed) => {
+  if (datePassed >= delay) {
+    chrome.storage.sync.set({
+      settings: { ...items['settings'], date: new Date().getUTCDay() },
+    });
+    chrome.storage.sync.remove('clips');
+    setEmptyView();
+  }
+};
 
 select('.prompt').addEventListener('click', () => {
   console.log('hello');
@@ -83,7 +128,6 @@ const addClips = clips => {
   });
   clipSection.innerHTML = data;
 };
-
 
 singleClip.addEventListener('mouseover', e => {
   if (e.target.className === 'content') {
@@ -161,20 +205,13 @@ const copyToClipBoard = data => {
     });
 };
 
-//dark mode
-// function click(e) {
-//   chrome.tabs.executeScript(null,
-//       {code:"document.body.style.backgroundColor='" + e.target.id + "'"});
-//   window.close();
-// }
-// document.addEventListener('DOMContentLoaded', function () {
-//   var divs = document.querySelectorAll('div');
-//   for (var i = 0; i < divs.length; i++) {
-//     divs[i].addEventListener('click', click);
-//   }
-// });
+bugReport.addEventListener('click', () => {
+  const URL = 'https://github.com/Oluwasegun-AA/MultiClip/issues';
+  chrome.tabs.create({ url: URL });
+});
 
-// on command recieved
-// chrome.commands.onCommand.addListener(function(command) {
-//   console.log('onCommand event received for message: ', command);
-// });
+logo.addEventListener('click', () => {
+  const URL = 'https://github.com/Oluwasegun-AA/MultiClip';
+  chrome.tabs.create({ url: URL });
+});
+
