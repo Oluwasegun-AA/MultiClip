@@ -4,43 +4,43 @@
     "description": "Extension Name"
   },
   "description": {
-    "message": "MultiClip makes it easy to save multiple items into its clipboard, preview and selectively paste them when needed",
+    "message": "MultiClip permet d'enregistrer facilement plusieurs éléments dans son presse-papiers, de les prévisualiser et de les coller sélectivement au besoin",
     "description": "extension description"
   },
   "settings": {
-    "message": "Settings",
+    "message": "Réglages",
     "description": "switch to settings view"
   },
   "clearAll": {
-    "message": "Clear All",
+    "message": "Tout Effacer",
     "description": "clear all clips"
   },
   "bugReport": {
-    "message": "Report a Bug",
+    "message": "Signaler un Bug",
     "description": "raise issues"
   },
   "emptyPrompt": {
-    "message": "ClipBoard is Empty",
+    "message": "Le presse-papiers est vide",
     "description": "clipboard empty prompt"
   },
   "copyPrompt": {
-    "message": "Copy with Ctrl+C or Cmd+C or type here",
+    "message": "Copiez avec Ctrl+C ou Cmd+C ou tapez ici",
     "description": "usage hint"
   },
   "default": {
-    "message": "Default settings",
+    "message": "Réglages par défaut",
     "description": "reset to default settings"
   },
   "back": {
-    "message": "Back",
+    "message": "Retour",
     "description": "return to main view"
   },
   "restoreDefault": {
-    "message": "Default Settings",
+    "message": "Réglages par défaut",
     "description": "return to main view"
   },
   "saveButton": {
-    "message": "Save",
+    "message": "Enregistrer",
     "description": "save button"
   },
   "note": {
@@ -48,67 +48,67 @@
     "description": "Note text"
   },
   "noteText": {
-    "message": "Setting AutoSave to <i>\"yes\"</i> requires you to give Clipboard permission to every page",
+    "message": "Passer l'enregistrement automatique à <i>\"oui\"</i> nécessite que vous donniez à Clipboard l'accès à toutes les pages",
     "description": "Note text"
   },
   "clearClipAfter": {
-    "message": "Clear Clipboard After:",
+    "message": "Effacer le presse-papiers après:",
     "description": "clip board clear option"
   },
   "theme": {
-    "message": "Theme:",
+    "message": "Thème:",
     "description": "select theme"
   },
   "autoSave": {
-    "message": "AutoSave on Copy:",
+    "message": "Enregistrement automatique sur copie",
     "description": "auto save preference"
   },
   "yes": {
-    "message": "Yes",
+    "message": "Oui",
     "description": "select Value"
   },
   "no": {
-    "message": "No",
+    "message": "Non",
     "description": "select value"
   },
   "light": {
-    "message": "Light",
+    "message": "Lumineux",
     "description": "theme option"
   },
   "dark": {
-    "message": "Dark",
+    "message": "Sombre",
     "description": "theme option"
   },
   "no1": {
-    "message": "1 day",
+    "message": "1 jour",
     "description": "auto delete interval"
   },
   "no2": {
-    "message": "2 days",
+    "message": "2 jours",
     "description": "auto delete interval"
   },
   "no3": {
-    "message": "3 days",
+    "message": "3 jours",
     "description": "auto delete interval"
   },
   "no4": {
-    "message": "4 days",
+    "message": "4 jours",
     "description": "auto delete interval"
   },
   "no5": {
-    "message": "5 days",
+    "message": "5 jours",
     "description": "auto delete interval"
   },
   "no6": {
-    "message": "6 days",
+    "message": "6 jours",
     "description": "auto delete interval"
   },
   "no7": {
-    "message": "7 days",
+    "message": "7 jours",
     "description": "auto delete interval"
   },
   "no0": {
-    "message": "Never",
+    "message": "Jamais",
     "description": "auto delete interval"
   }
 }
