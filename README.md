@@ -2,7 +2,7 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
 
 # Multiclip
-Chrome Extension to copy multiple items and selectively paste where required
+MultiClip is a chrome extension which makes it easy to save multiple items into its clipboard, preview and selectively paste them when needed
 
 ## Table of Contents
 * [Project Overview](#Project-Overview)
@@ -15,28 +15,42 @@ Chrome Extension to copy multiple items and selectively paste where required
 * [License](#License)
 
 ## Project Overview
-loading . . .
+Having had several stressful moments going back and forth between browser tabs while trying to copy sets of disjointed contents to be used on another, I saw the need for this extension.
+
+other browser extensions of this like however exists, but the few good ones are not maintained, buggy and above all failed to generate the desired utility.
+
+The extension was designed to give the users added levels of flexibility among which are the dark mode, flexible auto clear, optional binding to the `copy` events, and optional language features (loading . . .)
+
+MultiClip keeps track of changes to the clipboard by retaining a copy of all clipped items so as to make them reusable until you do decide to discard them.
+
 
 ## Features
-loading . . .
+- [x] Trigger the extension with `Cmd+M` or `Ctrl+M`
+- [x] Copy multiple files to clipboard
+- [x] Selectively pasting clipboard Items
+- [x] Clipped items preview
+- [x] Copy with key-bindings `Ctrl+C`  or `Cmd+C`
+- [x] Delete selectively from the clipboard
+- [x] Dark Mode Option (settings)
+- [x] Auto delete after specified number of days (settings)
+- [x] Optional auto save on copy with or without copy-specific key-bindings (settings)
+- [] Four optional languages to select from namely, `English`, `Chinese`, `French` and `Arabic`
 
 ## Demo
-loading . . .
+![MultiClip demo](https://user-images.githubusercontent.com/25525765/65558184-0795da00-df36-11e9-8b48-b064d4d42082.gif)
 
 ## Known issues
-loading . . .
+No known [issues](https://github.com/Oluwasegun-AA/MultiClip/issues) at the moment. However, [issues](https://github.com/Oluwasegun-AA/MultiClip/issues) can be raised when such is noticed
 
 ## Installation
-loading . . .
+The extension is available on the `Chrome store` via `{ loading . . .}`
 
 ## Contributing
 >  Feel free to 🍴 fork this repository
 
->  👯 Clone this repository to your local machine using `{ loading . . . }
+>  👯 Clone this repository to your local machine using https://github.com/Oluwasegun-AA/MultiClip.git
 
 > Make Contributions
-
-> 🔃 Create a new pull request using   { loading . . . }
 
 ## Contributors
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
