@@ -16,48 +16,52 @@
     <!-- <button id="changeColor"></button> -->
     <div class="body">
         <noscript>This Extension requires JavaScript be available and enabled to function properly</noscript>
-      <h5>Settings</h5>
-      <div class="settings">
+      <h5 class="settings">Settings</h5>
+      <div class="options">
         <div class="menu">
           <span class="tag">Clear Clipboard After:</span>
           <select id="delay">
-            <option value="1">1 day</option>
-            <option value="2">2 days</option>
-            <option value="3">3 days</option>
-            <option value="4">4 days</option>
-            <option value="5">5 days</option>
-            <option value="6">6 days</option>
-            <option value="7">7 days</option>
-            <option selected value="0">Never</option>
+            <option class="no1" value="1">1 day</option>
+            <option class="no2" value="2">2 days</option>
+            <option class="no3" value="3">3 days</option>
+            <option class="no4" value="4">4 days</option>
+            <option class="no5" value="5">5 days</option>
+            <option class="no6" value="6">6 days</option>
+            <option class="no7" value="7">7 days</option>
+            <option class="no0" selected value="0">Never</option>
           </select>
         </div>
         <div class="menu">
             <span class="tag">Theme:</span>
             <select id="theme">
-              <option value="dark">Dark</option>
-              <option selected value="light">Light</option>
+              <option class="dark" value="dark">Dark</option>
+              <option class="light" selected value="light">Light</option>
             </select>
           </div>
       </div>
         <div class="menu">
             <span class="tag">AutoSave on Copy:</span>
             <select id="autoSave">
-              <option value="yes">Yes</option>
-              <option selected value="no">No</option>
+              <option class="yes" value="yes">Yes</option>
+              <option class="no" selected value="no">No</option>
             </select>
           </div>
       </div>
     </div>
     <div class="warningDiv">
-      <span><strong>Note:</strong></span>
-      <span>Setting AutoSave to <i>"yes"</i> requires you to give Clipboard permission to every page</span>
+      <span class="note"><strong>Note:</strong></span>
+      <span class="noteText">Setting AutoSave to <i>"yes"</i> requires you to give Clipboard permission to every page</span>
     </div>
     <div class="saveDiv">
       <button class="saveButton">Save</button>
     </div>
     <div class="footer">
       <span class="restoreDefault"> Default Settings </span>
-      <span class="bugReport"> &#x1F41E; Report a Bug </span>
+      <span > 
+        <span>
+          &#x1F41E; 
+        </span>
+        <span class="bugReport">Report a Bug </span></span>
     </div>
   </body>
 </html>

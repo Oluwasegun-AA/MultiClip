@@ -11,9 +11,23 @@ const bugReport = select('.bugReport');
 const documentBody = select('body');
 const footer = select('.footer');
 const elements = selectAll(
-  '.bugReport, .restoreDefault, .backBtn, .settings, .tag'
+  '.bugReport, .restoreDefault, .backBtn, .options, .settings, .tag'
 );
 const footerWithHeader = selectAll('.footer, .header');
+
+const translateMenu = selectAll(
+  '.settings, .note, .noteText, .bugReport, .saveButton, .restoreDefault, .no1, .no2, .no3, .no4, .no5, .no6, .no7, .no8, .no9, .no0, .dark, .light, .yes, .no'
+);
+
+const getI18nValue = field => {
+  return chrome.i18n.getMessage(field);
+};
+
+translateMenu.forEach(btn => {
+  const { className } = btn;
+  console.log(className);
+  btn.innerHTML = getI18nValue(className);
+});
 
 chrome.storage.sync.get('settings', items => {
   initializeValues(items['settings']);
@@ -27,6 +41,7 @@ saveBtn.addEventListener('click', e => {
     });
   });
   saveDiv.style.display = 'none';
+  warningDiv.style.display = 'none';
 });
 
 const getNewSettings = () => {
@@ -99,5 +114,8 @@ bugReport.addEventListener('click', () => {
 });
 
 autoSave.addEventListener('change', () => {
-  warningDiv.style.display = 'block';
+  if (autoSave.selectedIndex === 0) {
+    return (warningDiv.style.display = 'block');
+  }
+  warningDiv.style.display = 'none';
 });

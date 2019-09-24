@@ -18,6 +18,17 @@ const elements = selectAll(
   '.bugReport, .clearAll, .emptyPrompt, .copyPrompt, .logo, .settings'
 );
 const footerWithHeader = selectAll('.footer, .header');
+const translateMenu = selectAll('.settings, .clearAll, .bugReport, .emptyPrompt, .copyPrompt')
+
+const getI18nValue=(field)=>{
+  return  chrome.i18n.getMessage(field);
+}
+
+translateMenu.forEach((btn)=>{
+  const {className} = btn;
+  console.log(typeof className)
+  btn.innerHTML = getI18nValue(className)
+})
 
 chrome.storage.sync.get('clips', items => {
   if (!items['clips'] || Object.keys(items['clips']).length === 0) {

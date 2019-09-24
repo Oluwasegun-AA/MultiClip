@@ -1,11 +1,114 @@
 {
   "name": {
-    "message": "EasyRead",
+    "message": "MultiClip",
     "description": "Extension Name"
   },
   "description": {
-    "message": "Makes Reading convenient and stress free",
+    "message": "MultiClip makes it easy to save multiple items into its clipboard, preview and selectively paste them when needed",
     "description": "extension description"
+  },
+  "settings": {
+    "message": "Settings",
+    "description": "switch to settings view"
+  },
+  "clearAll": {
+    "message": "Clear All",
+    "description": "clear all clips"
+  },
+  "bugReport": {
+    "message": "Report a Bug",
+    "description": "raise issues"
+  },
+  "emptyPrompt": {
+    "message": "ClipBoard is Empty",
+    "description": "clipboard empty prompt"
+  },
+  "copyPrompt": {
+    "message": "Copy with Ctrl+C or Cmd+C or type here",
+    "description": "usage hint"
+  },
+  "default": {
+    "message": "Default settings",
+    "description": "reset to default settings"
+  },
+  "back": {
+    "message": "Back",
+    "description": "return to main view"
+  },
+  "restoreDefault": {
+    "message": "Default Settings",
+    "description": "return to main view"
+  },
+  "saveButton": {
+    "message": "Save",
+    "description": "save button"
+  },
+  "note": {
+    "message": "<strong>Note:</strong>",
+    "description": "Note text"
+  },
+  "noteText": {
+    "message": "Setting AutoSave to <i>\"yes\"</i> requires you to give Clipboard permission to every page",
+    "description": "Note text"
+  },
+  "clearClipAfter": {
+    "message": "Clear Clipboard After:",
+    "description": "clip board clear option"
+  },
+  "theme": {
+    "message": "Theme:",
+    "description": "select theme"
+  },
+  "autoSave": {
+    "message": "AutoSave on Copy:",
+    "description": "auto save preference"
+  },
+  "yes": {
+    "message": "Yes",
+    "description": "select Value"
+  },
+  "no": {
+    "message": "No",
+    "description": "select value"
+  },
+  "light": {
+    "message": "Light",
+    "description": "theme option"
+  },
+  "dark": {
+    "message": "Dark",
+    "description": "theme option"
+  },
+  "no1": {
+    "message": "1 day",
+    "description": "auto delete interval"
+  },
+  "no2": {
+    "message": "2 days",
+    "description": "auto delete interval"
+  },
+  "no3": {
+    "message": "3 days",
+    "description": "auto delete interval"
+  },
+  "no4": {
+    "message": "4 days",
+    "description": "auto delete interval"
+  },
+  "no5": {
+    "message": "5 days",
+    "description": "auto delete interval"
+  },
+  "no6": {
+    "message": "6 days",
+    "description": "auto delete interval"
+  },
+  "no7": {
+    "message": "7 days",
+    "description": "auto delete interval"
+  },
+  "no0": {
+    "message": "Never",
+    "description": "auto delete interval"
   }
-
 }
