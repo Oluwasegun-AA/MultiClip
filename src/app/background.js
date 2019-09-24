@@ -95,15 +95,3 @@ class MenuClickManager {
     return chrome.storage.sync.remove('clips');
   };
 }
-
-function updateClipboard(newClip) {
-  console.log(document.hasFocus());
-  navigator.clipboard
-    .writeText(newClip)
-    .then(() => {
-      console.log('Text copied.');
-    })
-    .catch(e => {
-      console.log('Failed to copy text.', e);
-    });
-}
