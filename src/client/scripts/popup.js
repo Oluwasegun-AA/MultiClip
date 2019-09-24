@@ -14,7 +14,9 @@ const text = select('.text');
 const copy = select('.copy');
 const bugReport = select('.bugReport');
 const documentBody = select('body');
-const elements = selectAll('.bugReport, .clearAll, .emptyPrompt, .copyPrompt, .logo, .settings');
+const elements = selectAll(
+  '.bugReport, .clearAll, .emptyPrompt, .copyPrompt, .logo, .settings'
+);
 const footerWithHeader = selectAll('.footer, .header');
 
 chrome.storage.sync.get('clips', items => {
@@ -38,33 +40,33 @@ chrome.storage.sync.get('settings', items => {
     if (thisDay < date) {
       const dateDiff = Math.abs(thisDay - date);
       const datePassed = date - dateDiff;
-      clearOnSetDate(delay, datePassed);
+      clearOnSetDate(items['settings'], delay, datePassed);
     } else {
       const datePassed = thisDay - date;
-      clearOnSetDate(delay, datePassed);
+      clearOnSetDate(items['settings'], delay, datePassed);
     }
   }
 });
 
-const initializeTheme=(theme)=>{
-  if(theme === 'dark'){
-    documentBody.style.backgroundColor = '#2f2d2d'
-    footerWithHeader.forEach((item)=>{
-      item.style.backgroundColor = '#2f2d2d'
-    })
-    elements.forEach((view)=>{
-      view.style.backgroundColor = '#2f2d2d'
-      view.style.border = 'none'
-      view.style.color = '#d6d3d3'
-    })
-    documentBody.style.color = '#d6d3d3'
+const initializeTheme = theme => {
+  if (theme === 'dark') {
+    documentBody.style.backgroundColor = '#2f2d2d';
+    footerWithHeader.forEach(item => {
+      item.style.backgroundColor = '#2f2d2d';
+    });
+    elements.forEach(view => {
+      view.style.backgroundColor = '#2f2d2d';
+      view.style.border = 'none';
+      view.style.color = '#d6d3d3';
+    });
+    documentBody.style.color = '#d6d3d3';
   }
-}
+};
 
-const clearOnSetDate = (delay, datePassed) => {
+const clearOnSetDate = (settings, delay, datePassed) => {
   if (datePassed >= delay) {
     chrome.storage.sync.set({
-      settings: { ...items['settings'], date: new Date().getUTCDay() },
+      settings: { ...settings, date: new Date().getUTCDay() },
     });
     chrome.storage.sync.remove('clips');
     setEmptyView();
@@ -82,23 +84,29 @@ select('.prompt').addEventListener('click', () => {
 
 select('.clipText').addEventListener('keypress', e => {
   const { keyCode, shiftKey } = e;
-  console.log(e);
   if (keyCode === 13 && shiftKey !== true) {
     e.preventDefault();
     chrome.storage.sync.get('clips', items => {
-      if (typeof items['clips'] === 'object') {
+      const allClips = items['clips'];
+      const clipExist = typeof allClips === 'object';
+      const itemToClip = manualText.value.trim();
+      const itemToClipIsValid = itemToClip !== '';
+      if (
+        clipExist &&
+        itemToClipIsValid &&
+        checkClipExist(items['clips'], itemToClip)
+      ) {
+        const maxId = Math.max(...Object.keys(allClips));
         const clips = {
           ...items['clips'],
-          [Object.keys(items['clips']).length + 1]: manualText.value,
+          [maxId + 1]: itemToClip,
         };
-        console.log('val', manualText.value);
-        console.log('items', clips);
         chrome.storage.sync.set({ clips: clips }, () => {
           addClips(clips);
         });
         showBadge(Object.keys(clips).length);
-      } else {
-        const clips = { 1: manualText.value };
+      } else if (!clipExist && itemToClipIsValid) {
+        const clips = { 1: itemToClip };
         chrome.storage.sync.set({ clips: clips }, () => {
           addClips(clips);
         });
@@ -188,11 +196,12 @@ const setEmptyView = () => {
 
 singleClip.addEventListener('click', e => {
   const target = e.target.className;
-  if (e.target.className === 'copy' || 'content') {
+  if (target === 'copy' || 'content') {
     if (target === 'content') {
       return copyToClipBoard(e.target.innerHTML.trim());
+    } else if (target === 'copy') {
+      copyToClipBoard(e.target.nextElementSibling.innerHTML.trim());
     }
-    copyToClipBoard(e.target.nextElementSibling.innerHTML.trim());
   }
 });
 
@@ -215,3 +224,6 @@ logo.addEventListener('click', () => {
   chrome.tabs.create({ url: URL });
 });
 
+const checkClipExist = (oldClips, newClip) => {
+  return Object.keys(oldClips).every(key => oldClips[key] !== newClip);
+};

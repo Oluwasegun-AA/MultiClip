@@ -2,7 +2,7 @@ const defaultSettings = {
   date: new Date().getUTCDay(),
   delay: 7,
   theme: 'light',
-  autoSave: 'no'
+  autoSave: 'no',
 };
 
 chrome.runtime.onInstalled.addListener(() => {
@@ -19,13 +19,8 @@ chrome.runtime.onInstalled.addListener(() => {
     if (Object.keys(item).length === 0)
       chrome.storage.sync.set({ settings: defaultSettings });
   });
-  
-  chrome.browserAction.setBadgeBackgroundColor({ color: '#4688F1' });
-  chrome.storage.onChanged.addListener(() => {
-    // chrome.runtime.reload();
-  });
 
-  
+  chrome.browserAction.setBadgeBackgroundColor({ color: '#4688F1' });
 });
 
 // Create contextMenus
@@ -52,24 +47,36 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
   MenuClickManager[menuItemId](info, tab);
 });
 
+const checkClipExist = (oldClips, newClip) => {
+  return Object.keys(oldClips).every(key => oldClips[key] !== newClip);
+};
 class MenuClickManager {
   static selection = info => {
     const { selectionText } = info;
     chrome.storage.sync.get('clips', items => {
-      console.log('here', items['clips']);
-      if (typeof items['clips'] === 'object') {
+      const allClips = items['clips'];
+      const clipExist = typeof allClips === 'object';
+      const itemToClip = selectionText.trim();
+      const itemToClipIsValid = selectionText.trim() !== '';
+      if (
+        clipExist &&
+        itemToClipIsValid &&
+        checkClipExist(allClips, selectionText)
+      ) {
+        const maxId = Math.max(...Object.keys(allClips));
         const clips = {
           ...items['clips'],
-          [Object.keys(items['clips']).length + 1]: selectionText,
+          [maxId + 1]: itemToClip,
         };
         chrome.storage.sync.set({ clips: clips });
-      } else {
+      } else if (!clipExist && itemToClipIsValid) {
         chrome.storage.sync.set({ clips: { 1: selectionText } });
       }
     });
   };
   static page = () => {
-    console.log('heloooooo');
+    const URL = 'https://github.com/Oluwasegun-AA/MultiClip';
+    chrome.tabs.create({ url: URL });
   };
   static lightTheme = () => {
     return chrome.storage.sync.get('settings', item => {
@@ -90,7 +97,6 @@ class MenuClickManager {
 }
 
 function updateClipboard(newClip) {
-  // window.focus();
   console.log(document.hasFocus());
   navigator.clipboard
     .writeText(newClip)

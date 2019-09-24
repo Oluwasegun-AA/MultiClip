@@ -46,3 +46,11 @@ button {
   background-color: white;
   border: 1px solid rgb(238, 209, 209);
 }
+
+.warningDiv{
+  padding-left: 10px;
+  display: none;
+  font-size: 10px;
+  border-top: 1px solid rgb(228, 221, 221);
+  border-radius: 4px 4px 0px 0px;
+}

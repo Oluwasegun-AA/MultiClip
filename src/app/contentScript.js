@@ -4,15 +4,23 @@ const copyToClipBoard = () => {
       return navigator.clipboard
         .readText()
         .then(text => {
-          console.log(text);
           chrome.storage.sync.get('clips', items => {
-            if (typeof items['clips'] === 'object') {
+            const allClips = items['clips'];
+            const clipExist = typeof allClips === 'object';
+            const itemToClip = text.trim();
+            const itemToClipIsValid = itemToClip !== '';
+            if (
+              clipExist &&
+              itemToClipIsValid &&
+              checkClipExist(items['clips'], text)
+            ) {
+              const maxId = Math.max(...Object.keys(allClips));
               const clips = {
                 ...items['clips'],
-                [Object.keys(items['clips']).length + 1]: text,
+                [maxId + 1]: itemToClip,
               };
               chrome.storage.sync.set({ clips: clips });
-            } else {
+            } else if (!clipExist && itemToClipIsValid) {
               const clips = { 1: text };
               chrome.storage.sync.set({ clips: clips });
             }
@@ -31,3 +39,7 @@ const copyToClipBoard = () => {
 document.addEventListener('copy', e => {
   copyToClipBoard();
 });
+
+const checkClipExist = (oldClips, newClip) => {
+  return Object.keys(oldClips).every(key => oldClips[key] !== newClip);
+};
