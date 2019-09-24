@@ -5,22 +5,25 @@ const theme = select('#theme');
 const autoSave = select('#autoSave');
 const saveBtn = select('.saveButton');
 const saveDiv = select('.saveDiv');
+const warningDiv = select('.warningDiv');
 const restoreDefault = select('.restoreDefault');
 const bugReport = select('.bugReport');
 const documentBody = select('body');
 const footer = select('.footer');
-const elements = selectAll('.bugReport, .restoreDefault, .backBtn, .settings, .tag');
+const elements = selectAll(
+  '.bugReport, .restoreDefault, .backBtn, .settings, .tag'
+);
 const footerWithHeader = selectAll('.footer, .header');
 
 chrome.storage.sync.get('settings', items => {
   initializeValues(items['settings']);
-  initializeTheme(items['settings'].theme)
+  initializeTheme(items['settings'].theme);
 });
 
 saveBtn.addEventListener('click', e => {
-  chrome.storage.sync.set({ settings: getNewSettings() }, (item) => {
+  chrome.storage.sync.set({ settings: getNewSettings() }, item => {
     chrome.storage.sync.get('settings', items => {
-      initializeTheme(items['settings'].theme)
+      initializeTheme(items['settings'].theme);
     });
   });
   saveDiv.style.display = 'none';
@@ -45,26 +48,26 @@ const getNewSettings = () => {
 
 const initializeTheme = theme => {
   if (theme === 'dark') {
-    documentBody.style.backgroundColor = '#2f2d2d'
-    documentBody.style.color = '#d6d3d3'
-    footerWithHeader.forEach((item)=>{
-      item.style.backgroundColor = '#2f2d2d'
-    })
-    elements.forEach((view)=>{
-      view.style.backgroundColor = '#2f2d2d'
-      view.style.border = 'none'
-      view.style.color = '#d6d3d3'
-    })
-  }else{
+    documentBody.style.backgroundColor = '#2f2d2d';
+    documentBody.style.color = '#d6d3d3';
+    footerWithHeader.forEach(item => {
+      item.style.backgroundColor = '#2f2d2d';
+    });
+    elements.forEach(view => {
+      view.style.backgroundColor = '#2f2d2d';
+      view.style.border = 'none';
+      view.style.color = '#d6d3d3';
+    });
+  } else {
     documentBody.style.backgroundColor = 'white';
     documentBody.style.color = 'black';
-    footerWithHeader.forEach((item)=>{
-      item.style.backgroundColor = 'white'
-    })
-    elements.forEach((view)=>{
-      view.style.backgroundColor = 'white'
-      view.style.color = 'black'
-    })
+    footerWithHeader.forEach(item => {
+      item.style.backgroundColor = 'white';
+    });
+    elements.forEach(view => {
+      view.style.backgroundColor = 'white';
+      view.style.color = 'black';
+    });
   }
 };
 
@@ -93,4 +96,8 @@ restoreDefault.addEventListener('click', () => {
 bugReport.addEventListener('click', () => {
   const URL = 'https://github.com/Oluwasegun-AA/MultiClip/issues';
   chrome.tabs.create({ url: URL });
+});
+
+autoSave.addEventListener('change', () => {
+  warningDiv.style.display = 'block';
 });
