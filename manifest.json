@@ -27,6 +27,7 @@
     "128": "src/client/assets/icon.png"
   },
   "permissions": [
+    "activeTab",
     "tabs",
     "contextMenus",
     "clipboardWrite",
@@ -34,6 +35,12 @@
     "declarativeContent",
     "storage",
     "<all_urls>"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/client/scripts/contentScript.js"]
+    }
   ],
   "offline_enabled": true,
   "commands": {
