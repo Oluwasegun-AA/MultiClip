@@ -6,7 +6,6 @@ module.exports = {
   },
   extends: [
     'airbnb-base',
-    'prettier'
   ],
   globals: {
     Atomics: 'readonly',
@@ -18,4 +17,7 @@ module.exports = {
   },
   rules: {
   },
+  globals:{
+    chrome: true
+  }
 };
