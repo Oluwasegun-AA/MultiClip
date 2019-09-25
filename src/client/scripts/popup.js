@@ -1,3 +1,11 @@
+import {
+  showBadge,
+  initializeTheme,
+  checkClipExist,
+  navigateTo,
+} from '../../common/index';
+import setI18Value from './utils';
+
 const select = document.querySelector.bind(document);
 const selectAll = document.querySelectorAll.bind(document);
 
@@ -11,24 +19,47 @@ const hint = select('.hint');
 const copyPrompt = select('.copyPrompt');
 const hintText = select('.hintText');
 const text = select('.text');
-const copy = select('.copy');
 const bugReport = select('.bugReport');
 const documentBody = select('body');
 const elements = selectAll(
   '.bugReport, .clearAll, .emptyPrompt, .copyPrompt, .logo, .settings'
 );
 const footerWithHeader = selectAll('.footer, .header');
-const translateMenu = selectAll('.settings, .clearAll, .bugReport, .emptyPrompt, .copyPrompt')
+const translateMenu = selectAll(
+  '.settings, .clearAll, .bugReport, .emptyPrompt, .copyPrompt'
+);
 
-const getI18nValue=(field)=>{
-  return  chrome.i18n.getMessage(field);
-}
+const setEmptyView = () => {
+  hint.style.display = 'none';
+  emptyPrompt.style.display = 'block';
+  copyPrompt.style.display = 'block';
+  manualText.style.display = 'none';
+  chrome.storage.sync.remove('clips');
+  clipSection.textContent = '';
+  clearAll.style.visibility = 'hidden';
+  showBadge('');
+};
 
-translateMenu.forEach((btn)=>{
-  const {className} = btn;
-  console.log(typeof className)
-  btn.innerHTML = getI18nValue(className)
-})
+translateMenu.forEach(btn => {
+  setI18Value(btn);
+});
+
+const addClips = clips => {
+  let data = '';
+  Object.keys(clips).forEach(key => {
+    data += `
+            <div id="no${key}" name="${key}" class="clip">
+            <span class="copy">
+            &#x2398;
+            </span>
+            <span id="no${key}" class="content">
+            ${clips[`${key}`]}
+            </span>
+            <span class="deleteClip"> &#x274C; </span>
+            </div>`;
+  });
+  clipSection.innerHTML = data;
+};
 
 chrome.storage.sync.get('clips', items => {
   if (!items['clips'] || Object.keys(items['clips']).length === 0) {
@@ -43,9 +74,19 @@ chrome.storage.sync.get('clips', items => {
   }
 });
 
+const clearOnSetDate = (settings, delay, datePassed) => {
+  if (datePassed >= delay) {
+    chrome.storage.sync.set({
+      settings: { ...settings, date: new Date().getUTCDay() },
+    });
+    chrome.storage.sync.remove('clips');
+    setEmptyView();
+  }
+};
+
 chrome.storage.sync.get('settings', items => {
   const { delay, date, theme } = items['settings'];
-  initializeTheme(theme);
+  initializeTheme(theme, documentBody, footerWithHeader, elements);
   const thisDay = new Date().getUTCDay();
   if (delay !== 0 && thisDay !== date) {
     if (thisDay < date) {
@@ -59,33 +100,7 @@ chrome.storage.sync.get('settings', items => {
   }
 });
 
-const initializeTheme = theme => {
-  if (theme === 'dark') {
-    documentBody.style.backgroundColor = '#2f2d2d';
-    footerWithHeader.forEach(item => {
-      item.style.backgroundColor = '#2f2d2d';
-    });
-    elements.forEach(view => {
-      view.style.backgroundColor = '#2f2d2d';
-      view.style.border = 'none';
-      view.style.color = '#d6d3d3';
-    });
-    documentBody.style.color = '#d6d3d3';
-  }
-};
-
-const clearOnSetDate = (settings, delay, datePassed) => {
-  if (datePassed >= delay) {
-    chrome.storage.sync.set({
-      settings: { ...settings, date: new Date().getUTCDay() },
-    });
-    chrome.storage.sync.remove('clips');
-    setEmptyView();
-  }
-};
-
 select('.prompt').addEventListener('click', () => {
-  console.log('hello');
   const instruction = select('.copyPrompt');
   const editor = select('.clipText');
   instruction.style.display = 'none';
@@ -112,13 +127,13 @@ select('.clipText').addEventListener('keypress', e => {
           ...items['clips'],
           [maxId + 1]: itemToClip,
         };
-        chrome.storage.sync.set({ clips: clips }, () => {
+        chrome.storage.sync.set({ clips }, () => {
           addClips(clips);
         });
         showBadge(Object.keys(clips).length);
       } else if (!clipExist && itemToClipIsValid) {
         const clips = { 1: itemToClip };
-        chrome.storage.sync.set({ clips: clips }, () => {
+        chrome.storage.sync.set({ clips }, () => {
           addClips(clips);
         });
       }
@@ -131,23 +146,6 @@ select('.clipText').addEventListener('keypress', e => {
   }
 });
 
-const addClips = clips => {
-  let data = '';
-  Object.keys(clips).forEach(key => {
-    data += `
-            <div id="no${key}" name="${key}" class="clip">
-            <span class="copy">
-            &#x2398;
-            </span>
-            <span id="no${key}" class="content">
-            ${clips[`${key}`]}
-            </span>
-            <span class="deleteClip"> &#x274C; </span>
-            </div>`;
-  });
-  clipSection.innerHTML = data;
-};
-
 singleClip.addEventListener('mouseover', e => {
   if (e.target.className === 'content') {
     hintText.style.display = 'none';
@@ -155,7 +153,8 @@ singleClip.addEventListener('mouseover', e => {
     text.innerHTML = e.target.innerText.trim();
   }
 });
-singleClip.addEventListener('mouseout', e => {
+
+singleClip.addEventListener('mouseout', () => {
   hintText.style.display = 'block';
   text.style.display = 'none';
 });
@@ -164,19 +163,14 @@ clearAll.addEventListener('click', () => {
   setEmptyView();
 });
 
-const showBadge = number => {
-  chrome.browserAction.setBadgeText({ text: `${number}` });
-};
-
 singleClip.addEventListener('click', e => {
   if (e.target.className === 'deleteClip') {
-    const { id, innerHTML } = e.target.previousElementSibling;
+    const { id } = e.target.previousElementSibling;
     let remainingItems = {};
     chrome.storage.sync.get('clips', items => {
       const memoryId = id.substr(2);
       const newKeys = Object.keys(items['clips']).filter(id => id !== memoryId);
       newKeys.forEach(key => {
-        console.log(key);
         remainingItems = {
           ...remainingItems,
           [`${key}`]: items['clips'][`${key}`],
@@ -194,47 +188,25 @@ singleClip.addEventListener('click', e => {
   }
 });
 
-const setEmptyView = () => {
-  hint.style.display = 'none';
-  emptyPrompt.style.display = 'block';
-  copyPrompt.style.display = 'block';
-  manualText.style.display = 'none';
-  chrome.storage.sync.remove('clips');
-  clipSection.textContent = '';
-  clearAll.style.visibility = 'hidden';
-  showBadge('');
+const copyToClipBoard = data => {
+  navigator.clipboard.writeText(data);
 };
 
 singleClip.addEventListener('click', e => {
   const target = e.target.className;
   if (target === 'copy' || 'content') {
     if (target === 'content') {
-      return copyToClipBoard(e.target.innerHTML.trim());
+      copyToClipBoard(e.target.innerHTML.trim());
     } else if (target === 'copy') {
       copyToClipBoard(e.target.nextElementSibling.innerHTML.trim());
     }
   }
 });
 
-const copyToClipBoard = data => {
-  navigator.clipboard
-    .writeText(data)
-    .then(text => {})
-    .catch(e => {
-      console.log('could not copy to clip board', e);
-    });
-};
-
 bugReport.addEventListener('click', () => {
-  const URL = 'https://github.com/Oluwasegun-AA/MultiClip/issues';
-  chrome.tabs.create({ url: URL });
+  navigateTo('https://github.com/Oluwasegun-AA/MultiClip/issues');
 });
 
 logo.addEventListener('click', () => {
-  const URL = 'https://github.com/Oluwasegun-AA/MultiClip';
-  chrome.tabs.create({ url: URL });
+  navigateTo('https://github.com/Oluwasegun-AA/MultiClip');
 });
-
-const checkClipExist = (oldClips, newClip) => {
-  return Object.keys(oldClips).every(key => oldClips[key] !== newClip);
-};

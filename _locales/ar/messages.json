@@ -4,99 +4,99 @@
     "description": "Extension Name"
   },
   "description": {
-    "message": "MultiClip makes it easy to save multiple items into its clipboard, preview and selectively paste them when needed",
+    "message": "yaemal MultiClip ealaa tashil hifz eanasir mutaeadidat fi alhafizat alkhasat biha wamueayinatiha walasaqiha bishakl aintiqayiyin eind alhaja",
     "description": "extension description"
   },
   "settings": {
-    "message": "Settings",
+    "message": "al'iiedadat",
     "description": "switch to settings view"
   },
   "clearAll": {
-    "message": "Clear All",
+    "message": "amsih alkulu",
     "description": "clear all clips"
   },
   "bugReport": {
-    "message": "Report a Bug",
+    "message": "al'iiblagh ean khata",
     "description": "raise issues"
   },
   "emptyPrompt": {
-    "message": "ClipBoard is Empty",
+    "message": "alhafizat farigha",
     "description": "clipboard empty prompt"
   },
   "copyPrompt": {
-    "message": "Copy with Ctrl+C or Cmd+C or type here",
+    "message": "ainsakh biastikhdam Ctrl + C 'aw Cmd + C 'aw aiktaba huna",
     "description": "usage hint"
   },
   "default": {
-    "message": "Default settings",
+    "message": "al'iiedadat alaiftiradia",
     "description": "reset to default settings"
   },
   "back": {
-    "message": "Back",
+    "message": "eawda",
     "description": "return to main view"
   },
   "restoreDefault": {
-    "message": "Default Settings",
+    "message": "al'iiedadat alaiftiradia",
     "description": "return to main view"
   },
   "saveButton": {
-    "message": "Save",
+    "message": "hifz",
     "description": "save button"
   },
   "note": {
-    "message": "<strong>Note:</strong>",
+    "message": "<strong>malhuza:</strong>",
     "description": "Note text"
   },
   "noteText": {
-    "message": "Setting AutoSave to <i>\"yes\"</i> requires you to give Clipboard permission to every page",
+    "message": "dubit alhifz altiliqayiyu ealaa<i>\"nem\"</i> yatatalab mink manh alhafizat 'idhnana likuli safha",
     "description": "Note text"
   },
   "clearClipAfter": {
-    "message": "Clear Clipboard After:",
+    "message": "masah alhafizat baed:",
     "description": "clip board clear option"
   },
   "theme": {
-    "message": "Theme:",
+    "message": "mawdue:",
     "description": "select theme"
   },
   "autoSave": {
-    "message": "AutoSave on Copy:",
+    "message": "hifz tilqayiy ealaa nuskha:",
     "description": "auto save preference"
   },
   "yes": {
-    "message": "Yes",
+    "message": "nem",
     "description": "select Value"
   },
   "no": {
-    "message": "No",
+    "message": "la",
     "description": "select value"
   },
   "light": {
-    "message": "Light",
+    "message": "daw'",
     "description": "theme option"
   },
   "dark": {
-    "message": "Dark",
+    "message": "dakn",
     "description": "theme option"
   },
   "no1": {
-    "message": "1 day",
+    "message": "yawm 1",
     "description": "auto delete interval"
   },
   "no2": {
-    "message": "2 days",
+    "message": "2 'ayam",
     "description": "auto delete interval"
   },
   "no3": {
-    "message": "3 days",
+    "message": "3 'ayam",
     "description": "auto delete interval"
   },
   "no4": {
-    "message": "4 days",
+    "message": "4 'ayam",
     "description": "auto delete interval"
   },
   "no5": {
-    "message": "5 days",
+    "message": "5 'ayam",
     "description": "auto delete interval"
   },
   "no6": {
@@ -104,11 +104,11 @@
     "description": "auto delete interval"
   },
   "no7": {
-    "message": "7 days",
+    "message": "7 'ayam",
     "description": "auto delete interval"
   },
   "no0": {
-    "message": "Never",
+    "message": "'abadaan",
     "description": "auto delete interval"
   }
 }

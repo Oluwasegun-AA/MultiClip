@@ -4,111 +4,111 @@
     "description": "Extension Name"
   },
   "description": {
-    "message": "MultiClip makes it easy to save multiple items into its clipboard, preview and selectively paste them when needed",
+    "message": "MultiClip 可以方便地将多个项目保存到剪贴板中，在需要时预览并有选择地粘贴它们",
     "description": "extension description"
   },
   "settings": {
-    "message": "Settings",
+    "message": "设置",
     "description": "switch to settings view"
   },
   "clearAll": {
-    "message": "Clear All",
+    "message": "清除所有",
     "description": "clear all clips"
   },
   "bugReport": {
-    "message": "Report a Bug",
+    "message": "报告错误",
     "description": "raise issues"
   },
   "emptyPrompt": {
-    "message": "ClipBoard is Empty",
+    "message": "剪贴板为空",
     "description": "clipboard empty prompt"
   },
   "copyPrompt": {
-    "message": "Copy with Ctrl+C or Cmd+C or type here",
+    "message": "用ctrl+c或cmd+c复制或在此处键入",
     "description": "usage hint"
   },
   "default": {
-    "message": "Default settings",
+    "message": "默认设置",
     "description": "reset to default settings"
   },
   "back": {
-    "message": "Back",
+    "message": "背部",
     "description": "return to main view"
   },
   "restoreDefault": {
-    "message": "Default Settings",
+    "message": "默认设置",
     "description": "return to main view"
   },
   "saveButton": {
-    "message": "Save",
+    "message": "保存",
     "description": "save button"
   },
   "note": {
-    "message": "<strong>Note:</strong>",
+    "message": "<strong>注释:</strong>",
     "description": "Note text"
   },
   "noteText": {
-    "message": "Setting AutoSave to <i>\"yes\"</i> requires you to give Clipboard permission to every page",
+    "message": "设置自动保存为 <i>\"对\"</i> 要求您为每一页授予剪贴板权限",
     "description": "Note text"
   },
   "clearClipAfter": {
-    "message": "Clear Clipboard After:",
+    "message": "清除后的剪贴板:",
     "description": "clip board clear option"
   },
   "theme": {
-    "message": "Theme:",
+    "message": "主题:",
     "description": "select theme"
   },
   "autoSave": {
-    "message": "AutoSave on Copy:",
+    "message": "复制时自动保存:",
     "description": "auto save preference"
   },
   "yes": {
-    "message": "Yes",
+    "message": "是的",
     "description": "select Value"
   },
   "no": {
-    "message": "No",
+    "message": "不",
     "description": "select value"
   },
   "light": {
-    "message": "Light",
+    "message": "光",
     "description": "theme option"
   },
   "dark": {
-    "message": "Dark",
+    "message": "黑暗的",
     "description": "theme option"
   },
   "no1": {
-    "message": "1 day",
+    "message": "1天",
     "description": "auto delete interval"
   },
   "no2": {
-    "message": "2 days",
+    "message": "2 天",
     "description": "auto delete interval"
   },
   "no3": {
-    "message": "3 days",
+    "message": "3 天",
     "description": "auto delete interval"
   },
   "no4": {
-    "message": "4 days",
+    "message": "4 天",
     "description": "auto delete interval"
   },
   "no5": {
-    "message": "5 days",
+    "message": "5 天",
     "description": "auto delete interval"
   },
   "no6": {
-    "message": "6 days",
+    "message": "6 天",
     "description": "auto delete interval"
   },
   "no7": {
-    "message": "7 days",
+    "message": "7 天",
     "description": "auto delete interval"
   },
   "no0": {
-    "message": "Never",
+    "message": "从未",
     "description": "auto delete interval"
   }
 }

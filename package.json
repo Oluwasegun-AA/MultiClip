@@ -11,7 +11,11 @@
   },
   "homepage": "https://github.com/Oluwasegun-AA/MultiClip#readme",
   "scripts": {
-    "clear": "rimraf dist build",
+    "clear-pem": "rm -rf node_modules/public-encrypt/test",
+    "compile":"yarn clear-pem && yarn build && yarn bundle",
+    "bundle": "webpack --mode production",
+    "build": "yarn clear && babel ./src/client/views ./src/client/assets ./src/client/styles -d public/client --copy-files",
+    "clear": "rimraf public",
     "pretty": "./node_modules/.bin/prettier --single-quote --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "lint": "eslint src/**/*.js --fix",
     "test:pre-commit": "CI=true react-scripts test --colors -u --coverage",
@@ -19,7 +23,6 @@
     "contributors:add": "npx all-contributors add",
     "contributors:generate": "npx all-contributors generate"
   },
-
   "husky": {
     "hooks": {
       "pre-push": "lint-staged"
@@ -44,12 +47,15 @@
     "@babel/preset-env": "7.4.5",
     "@babel/register": "7.5.5",
     "all-contributors-cli": "6.1.2",
+    "babel-loader": "8.0.6",
     "eslint": "^6.4.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
     "husky": "3.0.4",
     "lint-staged": "9.2.3",
     "prettier": "1.18.2",
-    "rimraf": "3.0.0"
+    "rimraf": "3.0.0",
+    "webpack": "4.41.0",
+    "webpack-cli": "3.3.9"
   }
 }
