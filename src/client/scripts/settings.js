@@ -12,6 +12,9 @@ const delay = select('#delay');
 const theme = select('#theme');
 const autoSave = select('#autoSave');
 const saveBtn = select('.saveButton');
+const lang = select('.lang');
+const hi = select('#hi');
+// const dataReload = select('[data-reload]');
 const saveDiv = select('.saveDiv');
 const warningDiv = select('.warningDiv');
 const restoreDefault = select('.restoreDefault');
@@ -26,6 +29,16 @@ const translateMenu = selectAll(
   '.settings, .note, .noteText, .bugReport, .saveButton, .restoreDefault, .no1, .no2, .no3, .no4, .no5, .no6, .no7, .no8, .no9, .no0, .dark, .light, .yes, .no'
 );
 
+// language translations objects
+const language = {
+  eng: {
+    Language: 'welcome everyone'
+  },
+  french: {
+    Language: 'lingua'
+  }
+};
+
 translateMenu.forEach(btn => {
   setI18Value(btn);
 });
@@ -34,6 +47,7 @@ const initializeValues = values => {
   delay.value = values.delay;
   theme.value = values.theme;
   autoSave.value = values.autoSave;
+  // lang.value = values.lang;
 };
 
 chrome.storage.sync.get('settings', items => {
@@ -48,22 +62,40 @@ const getNewSettings = () => {
   const themeOptions = theme.options;
   const selectedTheme = theme.selectedIndex;
   const autoSaveOptions = autoSave.options;
+  // const newLanguage = lang.options;
   const selectedAutoSave = autoSave.selectedIndex;
   const newDelay = parseInt(delayOptions[selectedDelay].value, 10);
   const newSettings = {
     date: newDelay > 0 ? new Date().getUTCDay() : '',
     delay: newDelay,
+    // language: newLanguage,
     theme: themeOptions[selectedTheme].value,
     autoSave: autoSaveOptions[selectedAutoSave].value,
   };
   return newSettings;
 };
 
+// define language via window hash
+
+lang.addEventListener('click', () => {
+  if (window.location.hash) {
+    if (window.location.hash === '#french') {
+      hi.textContent = language.french.welcome;
+    }
+  }
+});
+
 saveBtn.addEventListener('click', () => {
   chrome.storage.sync.set({ settings: getNewSettings() }, () => {
     chrome.storage.sync.get('settings', items => {
       const { theme } = items.settings;
       initializeTheme(theme, documentBody, footerWithHeader, elements);
+      // // define language via window hash
+      // if (window.location.hash) {
+      //   if (window.location.hash === '#french') {
+      //     hi.textContent = language.french.welcome;
+      //   }
+      // }
     });
   });
   saveDiv.style.display = 'none';
