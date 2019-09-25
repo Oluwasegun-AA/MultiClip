@@ -22,7 +22,8 @@ module.exports = {
     "comma-dangle":0,
     "dot-notation":0,
     "no-constant-condition":0,
-    "consistent-return":0
+    "consistent-return":0,
+    "operator-linebreak":0
   },
   globals:{
     chrome: true

@@ -1,23 +1,20 @@
-const checkClipExist = (oldClips, newClip) => {
-  const clips = Object.keys(oldClips);
-  return clips.every(key => oldClips[key] !== newClip);
-};
+import { checkClipExist } from '../common/index';
 
 const copyToClipBoard = () => {
-  chrome.storage.sync.get('settings', (items) => {
+  chrome.storage.sync.get('settings', items => {
     if (items.settings.autoSave === 'yes') {
       return navigator.clipboard
         .readText()
-        .then((text) => {
-          chrome.storage.sync.get('clips', (items) => {
+        .then(text => {
+          chrome.storage.sync.get('clips', items => {
             const allClips = items.clips;
             const clipExist = typeof allClips === 'object';
             const itemToClip = text.trim();
             const itemToClipIsValid = itemToClip !== '';
             if (
-              clipExist
-              && itemToClipIsValid
-              && checkClipExist(items.clips, text)
+              clipExist &&
+              itemToClipIsValid &&
+              checkClipExist(items.clips, text)
             ) {
               const maxId = Math.max(...Object.keys(allClips));
               const clips = {
@@ -31,10 +28,10 @@ const copyToClipBoard = () => {
             }
           });
         })
-        .catch((e) => {
+        .catch(e => {
           console.warn(
             'You need to authorize the page to access your clipboard in order to copy to multiClip',
-            e,
+            e
           );
         });
     }

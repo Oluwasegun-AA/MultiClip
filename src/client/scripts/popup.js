@@ -21,9 +21,7 @@ const translateMenu = selectAll(
   '.settings, .clearAll, .bugReport, .emptyPrompt, .copyPrompt'
 );
 
-const getI18nValue = field => {
-  return chrome.i18n.getMessage(field);
-};
+const getI18nValue = field => chrome.i18n.getMessage(field);
 
 const showBadge = number => {
   chrome.browserAction.setBadgeText({ text: `${number}` });

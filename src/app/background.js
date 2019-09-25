@@ -1,9 +1,4 @@
-const defaultSettings = {
-  date: new Date().getUTCDay(),
-  delay: 7,
-  theme: 'light',
-  autoSave: 'no',
-};
+import { defaultSettings } from '../common/index';
 
 chrome.runtime.onInstalled.addListener(() => {
   chrome.storage.sync.get('clips', item => {

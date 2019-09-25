@@ -1,0 +1,58 @@
+h5 {
+  text-align: center;
+  margin: 0px;
+  color: #8c8a8a;
+  border-bottom: 1px solid rgb(218, 215, 215);
+  padding: 0px 0px 8px 0px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 4px 2px 4px 2px;
+}
+
+.tag {
+  font-size: 12px;
+}
+
+select {
+  width: 100px;
+}
+
+.settings {
+  margin: 8px 0px 0px 0px;
+}
+
+button {
+  border-radius: 4px;
+  width: max-content;
+  outline: none;
+  text-align: center;
+}
+
+.saveDiv {
+  display: none;
+  text-align: center;
+  background-color: rgb(233, 233, 233);
+}
+
+.saveButton {
+  height: 20px;
+  margin: 5px 0px 3px 0px;
+  background-color: rgb(237, 235, 235);
+}
+
+.saveButton:hover {
+  background-color: white;
+  border: 1px solid rgb(238, 209, 209);
+}
+
+.warningDiv {
+  padding-left: 10px;
+  display: none;
+  font-size: 10px;
+  border-top: 1px solid rgb(228, 221, 221);
+  border-radius: 4px 4px 0px 0px;
+}
