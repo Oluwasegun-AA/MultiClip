@@ -1,3 +1,8 @@
+const checkClipExist = (oldClips, newClip) => {
+  const clips = Object.keys(oldClips);
+  return clips.every(key => oldClips[key] !== newClip);
+};
+
 const copyToClipBoard = () => {
   chrome.storage.sync.get('settings', (items) => {
     if (items.settings.autoSave === 'yes') {
@@ -36,8 +41,6 @@ const copyToClipBoard = () => {
   });
 };
 
-document.addEventListener('copy', (e) => {
+document.addEventListener('copy', () => {
   copyToClipBoard();
 });
-
-const checkClipExist = (oldClips, newClip) => Object.keys(oldClips).every((key) => oldClips[key] !== newClip);

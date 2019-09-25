@@ -8,18 +8,17 @@ const defaultSettings = {
 chrome.runtime.onInstalled.addListener(() => {
   chrome.storage.sync.get('clips', item => {
     const memoryLength = Object.keys(item).length;
-    const badge =
-      memoryLength > 0 && item['clips']
-        ? chrome.browserAction.setBadgeText({
-            text: `${Object.keys(item['clips']).length}`,
-          })
-        : chrome.browserAction.setBadgeText({ text: '' });
+    if (memoryLength > 0 && item['clips']) {
+      chrome.browserAction.setBadgeText({
+        text: `${Object.keys(item['clips']).length}`,
+      });
+    } else {
+      chrome.browserAction.setBadgeText({ text: '' });
+    }
   });
   chrome.storage.sync.get('settings', item => {
-    if (Object.keys(item).length === 0)
-      chrome.storage.sync.set({ settings: defaultSettings });
+    if (Object.keys(item).length === 0) chrome.storage.sync.set({ settings: defaultSettings });
   });
-
   chrome.browserAction.setBadgeBackgroundColor({ color: '#4688F1' });
 });
 
@@ -41,17 +40,13 @@ chrome.contextMenus.create({
   contexts: ['page', 'browser_action'],
 });
 
-// attach listeners
-chrome.contextMenus.onClicked.addListener((info, tab) => {
-  const { menuItemId } = info;
-  MenuClickManager[menuItemId](info, tab);
-});
-
 const checkClipExist = (oldClips, newClip) => {
-  return Object.keys(oldClips).every(key => oldClips[key] !== newClip);
+  const clips = Object.keys(oldClips);
+  return clips.every(key => oldClips[key] !== newClip);
 };
+
 class MenuClickManager {
-  static selection = info => {
+  static selection(info) {
     const { selectionText } = info;
     chrome.storage.sync.get('clips', items => {
       const allClips = items['clips'];
@@ -59,39 +54,50 @@ class MenuClickManager {
       const itemToClip = selectionText.trim();
       const itemToClipIsValid = selectionText.trim() !== '';
       if (
-        clipExist &&
-        itemToClipIsValid &&
-        checkClipExist(allClips, selectionText)
+        clipExist
+        && itemToClipIsValid
+        && checkClipExist(allClips, selectionText)
       ) {
         const maxId = Math.max(...Object.keys(allClips));
         const clips = {
           ...items['clips'],
           [maxId + 1]: itemToClip,
         };
-        chrome.storage.sync.set({ clips: clips });
+        chrome.storage.sync.set({ clips });
       } else if (!clipExist && itemToClipIsValid) {
         chrome.storage.sync.set({ clips: { 1: selectionText } });
       }
     });
-  };
-  static page = () => {
+  }
+
+  static page() {
     const URL = 'https://github.com/Oluwasegun-AA/MultiClip';
     chrome.tabs.create({ url: URL });
-  };
-  static lightTheme = () => {
-    return chrome.storage.sync.get('settings', item => {
-      let settings = { ...items['settings'], theme: 'light' };
-      chrome.storage.sync.set({ settings: settings });
+  }
+
+  static lightTheme() {
+    return chrome.storage.sync.get('settings', items => {
+      const settings = { ...items['settings'], theme: 'light' };
+      chrome.storage.sync.set({ settings });
     });
-  };
-  static darkTheme = () => {
-    return chrome.storage.sync.get('settings', item => {
-      let settings = { ...items['settings'], theme: 'dark' };
-      chrome.storage.sync.set({ settings: settings });
+  }
+
+  static darkTheme() {
+    return chrome.storage.sync.get('settings', items => {
+      const settings = { ...items['settings'], theme: 'dark' };
+      chrome.storage.sync.set({ settings });
     });
-  };
-  static deleteItems = () => {};
-  static clearClippedItems = () => {
+  }
+
+  static deleteItems() {}
+
+  static clearClippedItems() {
     return chrome.storage.sync.remove('clips');
-  };
+  }
 }
+
+// attach listeners
+chrome.contextMenus.onClicked.addListener((info, tab) => {
+  const { menuItemId } = info;
+  MenuClickManager[menuItemId](info, tab);
+});

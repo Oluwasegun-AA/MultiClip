@@ -9,7 +9,6 @@ const warningDiv = select('.warningDiv');
 const restoreDefault = select('.restoreDefault');
 const bugReport = select('.bugReport');
 const documentBody = select('body');
-const footer = select('.footer');
 const elements = selectAll(
   '.bugReport, .restoreDefault, .backBtn, .options, .settings, .tag'
 );
@@ -19,46 +18,17 @@ const translateMenu = selectAll(
   '.settings, .note, .noteText, .bugReport, .saveButton, .restoreDefault, .no1, .no2, .no3, .no4, .no5, .no6, .no7, .no8, .no9, .no0, .dark, .light, .yes, .no'
 );
 
-const getI18nValue = field => {
-  return chrome.i18n.getMessage(field);
-};
+const getI18nValue = field => chrome.i18n.getMessage(field);
 
 translateMenu.forEach(btn => {
   const { className } = btn;
-  console.log(className);
   btn.innerHTML = getI18nValue(className);
 });
 
-chrome.storage.sync.get('settings', items => {
-  initializeValues(items['settings']);
-  initializeTheme(items['settings'].theme);
-});
-
-saveBtn.addEventListener('click', e => {
-  chrome.storage.sync.set({ settings: getNewSettings() }, item => {
-    chrome.storage.sync.get('settings', items => {
-      initializeTheme(items['settings'].theme);
-    });
-  });
-  saveDiv.style.display = 'none';
-  warningDiv.style.display = 'none';
-});
-
-const getNewSettings = () => {
-  const delayOptions = delay.options;
-  const selectedDelay = delay.selectedIndex;
-  const themeOptions = theme.options;
-  const selectedTheme = theme.selectedIndex;
-  const autoSaveOptions = autoSave.options;
-  const selectedAutoSave = autoSave.selectedIndex;
-  const newDelay = parseInt(delayOptions[selectedDelay].value);
-  const newSettings = {
-    date: newDelay > 0 ? new Date().getUTCDay() : '',
-    delay: newDelay,
-    theme: themeOptions[selectedTheme].value,
-    autoSave: autoSaveOptions[selectedAutoSave].value,
-  };
-  return newSettings;
+const initializeValues = values => {
+  delay.value = values.delay;
+  theme.value = values.theme;
+  autoSave.value = values.autoSave;
 };
 
 const initializeTheme = theme => {
@@ -86,11 +56,37 @@ const initializeTheme = theme => {
   }
 };
 
-const initializeValues = values => {
-  delay.value = values.delay;
-  theme.value = values.theme;
-  autoSave.value = values.autoSave;
+chrome.storage.sync.get('settings', items => {
+  initializeValues(items.settings);
+  initializeTheme(items.settings.theme);
+});
+
+const getNewSettings = () => {
+  const delayOptions = delay.options;
+  const selectedDelay = delay.selectedIndex;
+  const themeOptions = theme.options;
+  const selectedTheme = theme.selectedIndex;
+  const autoSaveOptions = autoSave.options;
+  const selectedAutoSave = autoSave.selectedIndex;
+  const newDelay = parseInt(delayOptions[selectedDelay].value, 10);
+  const newSettings = {
+    date: newDelay > 0 ? new Date().getUTCDay() : '',
+    delay: newDelay,
+    theme: themeOptions[selectedTheme].value,
+    autoSave: autoSaveOptions[selectedAutoSave].value,
+  };
+  return newSettings;
 };
+
+saveBtn.addEventListener('click', () => {
+  chrome.storage.sync.set({ settings: getNewSettings() }, () => {
+    chrome.storage.sync.get('settings', items => {
+      initializeTheme(items.settings.theme);
+    });
+  });
+  saveDiv.style.display = 'none';
+  warningDiv.style.display = 'none';
+});
 
 selectAll('select').forEach(select => {
   select.addEventListener('change', () => {
@@ -115,7 +111,8 @@ bugReport.addEventListener('click', () => {
 
 autoSave.addEventListener('change', () => {
   if (autoSave.selectedIndex === 0) {
-    return (warningDiv.style.display = 'block');
+    warningDiv.style.display = 'block';
+  } else {
+    warningDiv.style.display = 'none';
   }
-  warningDiv.style.display = 'none';
 });

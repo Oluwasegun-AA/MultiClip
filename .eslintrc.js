@@ -16,6 +16,13 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
+    "no-shadow": 0,
+    "arrow-parens": 0,
+    "no-param-reassign": 0,
+    "comma-dangle":0,
+    "dot-notation":0,
+    "no-constant-condition":0,
+    "consistent-return":0
   },
   globals:{
     chrome: true
