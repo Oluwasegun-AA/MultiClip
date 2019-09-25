@@ -20,6 +20,16 @@
         "doc",
         "maintenance"
       ]
+    },
+    {
+      "login": "deschantkn",
+      "name": "Deschant Kounou",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/50397889?v=4",
+      "profile": "https://github.com/deschantkn",
+      "contributions": [
+        "code",
+        "translation"
+      ]
     }
   ],
   "contributorsPerLine": 7

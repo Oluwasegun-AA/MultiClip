@@ -2,12 +2,12 @@
   "manifest_version": 2,
   "name": "__MSG_Name__",
   "description": "__MSG_description__",
-  "version": "0.0.1",
+  "version": "0.10",
   "author": "Adépòjù Olúwáségun",
   "default_locale": "en",
-  "homepage_url": "http://www.popup.com",
+  "homepage_url": "https://github.com/Oluwasegun-AA/MultiClip",
   "background": {
-    "scripts": ["src/app/background.js"],
+    "scripts": ["public/src/background.js"],
     "persistent": false
   },
   "browser_action": {
@@ -17,9 +17,8 @@
       "48": "src/client/assets/icon.png",
       "128": "src/client/assets/icon.png"
     },
-    "default_popup": "src/client/views/popup.html"
+    "default_popup": "public/client/popup.html"
   },
-  "options_page": "src/client/views/options.html",
   "icons": {
     "16": "src/client/assets/icon.png",
     "32": "src/client/assets/icon.png",
@@ -39,7 +38,7 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["src/app/contentScript.js"]
+      "js": ["public/src/contentScript.js"]
     }
   ],
   "offline_enabled": true,
