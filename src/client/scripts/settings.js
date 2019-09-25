@@ -1,3 +1,5 @@
+import { initializeTheme, defaultSettings, navigateTo } from '../../common/index';
+
 const select = document.querySelector.bind(document);
 const selectAll = document.querySelectorAll.bind(document);
 const delay = select('#delay');
@@ -31,34 +33,10 @@ const initializeValues = values => {
   autoSave.value = values.autoSave;
 };
 
-const initializeTheme = theme => {
-  if (theme === 'dark') {
-    documentBody.style.backgroundColor = '#2f2d2d';
-    documentBody.style.color = '#d6d3d3';
-    footerWithHeader.forEach(item => {
-      item.style.backgroundColor = '#2f2d2d';
-    });
-    elements.forEach(view => {
-      view.style.backgroundColor = '#2f2d2d';
-      view.style.border = 'none';
-      view.style.color = '#d6d3d3';
-    });
-  } else {
-    documentBody.style.backgroundColor = 'white';
-    documentBody.style.color = 'black';
-    footerWithHeader.forEach(item => {
-      item.style.backgroundColor = 'white';
-    });
-    elements.forEach(view => {
-      view.style.backgroundColor = 'white';
-      view.style.color = 'black';
-    });
-  }
-};
-
 chrome.storage.sync.get('settings', items => {
+  const { theme } = items.settings;
   initializeValues(items.settings);
-  initializeTheme(items.settings.theme);
+  initializeTheme(theme, documentBody, footerWithHeader, elements);
 });
 
 const getNewSettings = () => {
@@ -81,7 +59,8 @@ const getNewSettings = () => {
 saveBtn.addEventListener('click', () => {
   chrome.storage.sync.set({ settings: getNewSettings() }, () => {
     chrome.storage.sync.get('settings', items => {
-      initializeTheme(items.settings.theme);
+      const { theme } = items.settings;
+      initializeTheme(theme, documentBody, footerWithHeader, elements);
     });
   });
   saveDiv.style.display = 'none';
@@ -95,18 +74,12 @@ selectAll('select').forEach(select => {
 });
 
 restoreDefault.addEventListener('click', () => {
-  const defaultSettings = {
-    delay: 7,
-    theme: 'light',
-    autoSave: 'no',
-  };
   initializeValues(defaultSettings);
   saveDiv.style.display = 'block';
 });
 
 bugReport.addEventListener('click', () => {
-  const URL = 'https://github.com/Oluwasegun-AA/MultiClip/issues';
-  chrome.tabs.create({ url: URL });
+  navigateTo('https://github.com/Oluwasegun-AA/MultiClip/issues');
 });
 
 autoSave.addEventListener('change', () => {

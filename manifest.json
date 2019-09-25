@@ -5,7 +5,7 @@
   "version": "0.0.1",
   "author": "Adépòjù Olúwáségun",
   "default_locale": "en",
-  "homepage_url": "http://www.popup.com",
+  "homepage_url": "https://github.com/Oluwasegun-AA/MultiClip",
   "background": {
     "scripts": ["public/src/background.js"],
     "persistent": false

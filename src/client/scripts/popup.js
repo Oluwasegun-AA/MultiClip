@@ -1,3 +1,11 @@
+import {
+  showBadge,
+  getI18nValue,
+  initializeTheme,
+  checkClipExist,
+  navigateTo,
+} from '../../common/index';
+
 const select = document.querySelector.bind(document);
 const selectAll = document.querySelectorAll.bind(document);
 
@@ -20,12 +28,6 @@ const footerWithHeader = selectAll('.footer, .header');
 const translateMenu = selectAll(
   '.settings, .clearAll, .bugReport, .emptyPrompt, .copyPrompt'
 );
-
-const getI18nValue = field => chrome.i18n.getMessage(field);
-
-const showBadge = number => {
-  chrome.browserAction.setBadgeText({ text: `${number}` });
-};
 
 const setEmptyView = () => {
   hint.style.display = 'none';
@@ -73,21 +75,6 @@ chrome.storage.sync.get('clips', items => {
   }
 });
 
-const initializeTheme = theme => {
-  if (theme === 'dark') {
-    documentBody.style.backgroundColor = '#2f2d2d';
-    footerWithHeader.forEach(item => {
-      item.style.backgroundColor = '#2f2d2d';
-    });
-    elements.forEach(view => {
-      view.style.backgroundColor = '#2f2d2d';
-      view.style.border = 'none';
-      view.style.color = '#d6d3d3';
-    });
-    documentBody.style.color = '#d6d3d3';
-  }
-};
-
 const clearOnSetDate = (settings, delay, datePassed) => {
   if (datePassed >= delay) {
     chrome.storage.sync.set({
@@ -100,7 +87,7 @@ const clearOnSetDate = (settings, delay, datePassed) => {
 
 chrome.storage.sync.get('settings', items => {
   const { delay, date, theme } = items['settings'];
-  initializeTheme(theme);
+  initializeTheme(theme, documentBody, footerWithHeader, elements);
   const thisDay = new Date().getUTCDay();
   if (delay !== 0 && thisDay !== date) {
     if (thisDay < date) {
@@ -122,10 +109,6 @@ select('.prompt').addEventListener('click', () => {
   editor.focus();
 });
 
-const checkClipExist = (oldClips, newClip) => {
-  return Object.keys(oldClips).every(key => oldClips[key] !== newClip);
-};
-
 select('.clipText').addEventListener('keypress', e => {
   const { keyCode, shiftKey } = e;
   if (keyCode === 13 && shiftKey !== true) {
@@ -136,9 +119,9 @@ select('.clipText').addEventListener('keypress', e => {
       const itemToClip = manualText.value.trim();
       const itemToClipIsValid = itemToClip !== '';
       if (
-        clipExist
-        && itemToClipIsValid
-        && checkClipExist(items['clips'], itemToClip)
+        clipExist &&
+        itemToClipIsValid &&
+        checkClipExist(items['clips'], itemToClip)
       ) {
         const maxId = Math.max(...Object.keys(allClips));
         const clips = {
@@ -171,6 +154,7 @@ singleClip.addEventListener('mouseover', e => {
     text.innerHTML = e.target.innerText.trim();
   }
 });
+
 singleClip.addEventListener('mouseout', () => {
   hintText.style.display = 'block';
   text.style.display = 'none';
@@ -221,11 +205,9 @@ singleClip.addEventListener('click', e => {
 });
 
 bugReport.addEventListener('click', () => {
-  const URL = 'https://github.com/Oluwasegun-AA/MultiClip/issues';
-  chrome.tabs.create({ url: URL });
+  navigateTo('https://github.com/Oluwasegun-AA/MultiClip/issues');
 });
 
 logo.addEventListener('click', () => {
-  const URL = 'https://github.com/Oluwasegun-AA/MultiClip';
-  chrome.tabs.create({ url: URL });
+  navigateTo('https://github.com/Oluwasegun-AA/MultiClip');
 });

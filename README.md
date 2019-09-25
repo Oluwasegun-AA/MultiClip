@@ -1,7 +1,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/c760dd1c8f7c08058e89/maintainability)](https://codeclimate.com/github/Oluwasegun-AA/MultiClip/maintainability) 
 [![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
 
-# Multiclip
+# MultiClip
 MultiClip is a chrome extension which makes it easy to save multiple items into its clipboard, preview and selectively paste them when needed
 
 ## Table of Contents
@@ -25,16 +25,17 @@ MultiClip keeps track of changes to the clipboard by retaining a copy of all cli
 
 
 ## Features
-- [x] Trigger the extension with `Cmd+M` or `Ctrl+M`
+- [x] Trigger extension with `Cmd+M` or `Ctrl+M`
 - [x] Copy multiple files to clipboard
-- [x] Selectively pasting clipboard Items
+- [x] Selectively paste clipboard Items
 - [x] Clipped items preview
 - [x] Copy with key-bindings `Ctrl+C`  or `Cmd+C`
+- [x] Context menu for easy interaction
 - [x] Delete selectively from the clipboard
 - [x] Dark Mode Option (settings)
 - [x] Auto delete after specified number of days (settings)
-- [x] Optional auto save on copy with or without copy-specific key-bindings (settings)
-- [] Four optional languages to select from namely, `English`, `Chinese`, `French` and `Arabic`
+- [x] Optional auto save on copy with/without copy-specific key-bindings (settings)
+- [ ] Four optional languages to select from namely, `English`, `Chinese`, `French` and `Arabic`
 
 ## Demo
 ![MultiClip demo](https://user-images.githubusercontent.com/25525765/65558184-0795da00-df36-11e9-8b48-b064d4d42082.gif)
@@ -46,9 +47,9 @@ No known [issues](https://github.com/Oluwasegun-AA/MultiClip/issues) at the mome
 The extension is available on the `Chrome store` via `{ loading . . .}`
 
 ## Contributing
->  Feel free to 🍴 fork this repository
+>  Feel free to contribute and kindly ensure to go through the Pull Request guide, and contributing.md file
 
->  👯 Clone this repository to your local machine using https://github.com/Oluwasegun-AA/MultiClip.git
+>  👯 Clone the repository using https://github.com/Oluwasegun-AA/MultiClip.git
 
 > Make Contributions
 
@@ -66,4 +67,4 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 ![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)
 
 - **[MIT license]()**
-- Copyright 2018 © <a href="https://twitter.com/Oluwasegun_AA" target="_blank">OLúwáségun</a>
+- Copyright 2018 © <a href="https://twitter.com/Oluwasegun_AA" target="_blank">Olúwáségun</a>
