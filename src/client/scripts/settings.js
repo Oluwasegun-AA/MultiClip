@@ -29,6 +29,10 @@ translateMenu.forEach(btn => {
   setI18nValue(btn);
 });
 
+/**
+ * @description set the selected value of the delay, autoSave and theme settings to specified values
+ * @param {Object} values object containing specified values
+ */
 const initializeValues = values => {
   delay.value = values.delay;
   theme.value = values.theme;
@@ -41,6 +45,10 @@ chrome.storage.sync.get('settings', items => {
   initializeTheme(theme, documentBody, footerWithHeader, elements);
 });
 
+/**
+ * @description gets the value in the settings field
+ * @returns {Object} object containing the settings
+ */
 const getNewSettings = () => {
   const delayOptions = delay.options;
   const selectedDelay = delay.selectedIndex;

@@ -1,3 +1,8 @@
+/**
+ * @description checks if the item to be saved already exists in the oldClips
+ * @param {Object} oldClips  an object containing all initially saved clips
+ * @param {String} newClip   the trimmed string to be added to MultiClip
+ */
 const checkClipExist = (oldClips, newClip) => {
   const clips = Object.keys(oldClips);
   return clips.every(key => oldClips[key] !== newClip);
@@ -10,6 +15,10 @@ const defaultSettings = {
   autoSave: 'no',
 };
 
+/**
+ * @description saves string to MultiClip storage
+ * @param {String} text string to be saved
+ */
 const saveToClips = text => {
   chrome.storage.sync.get('clips', items => {
     const allClips = items.clips;
@@ -30,10 +39,19 @@ const saveToClips = text => {
   });
 };
 
+/**
+ * @description sets the badge on the extension icon
+ * @param {Number} number the integer value to be displayed on the badge
+ */
 const showBadge = number => {
   chrome.browserAction.setBadgeText({ text: `${number}` });
 };
 
+
+/**
+ * @description navigates to specified URL on a new tab
+ * @param {String} URL the link(url) to be navigated to
+ */
 const navigateTo = URL => {
   chrome.tabs.create({ url: URL });
 };

@@ -24,6 +24,7 @@ const translateMenu = selectAll(
   '.settings, .clearAll, .bugReport, .emptyPrompt, .copyPrompt'
 );
 
+// set empty view when there are no clips
 const setEmptyView = () => {
   hint.style.display = 'none';
   emptyPrompt.style.display = 'block';
@@ -39,6 +40,10 @@ translateMenu.forEach(btn => {
   setI18nValue(btn);
 });
 
+/**
+ * @description populates view with clips
+ * @param {Object} clips object containing all clips
+ */
 const addClips = clips => {
   let data = '';
   Object.keys(clips).forEach(key => {
@@ -69,6 +74,12 @@ chrome.storage.sync.get('clips', items => {
   }
 });
 
+/**
+ * @description clears clips on the set date
+ * @param {Object} settings settings object
+ * @param {Number} delay the set self destruct days interval
+ * @param {Number} datePassed date expended
+ */
 const clearOnSetDate = (settings, delay, datePassed) => {
   if (datePassed >= delay) {
     chrome.storage.sync.set({
