@@ -7,6 +7,7 @@ const defaultSettings = {
   date: new Date().getUTCDay(),
   delay: 7,
   theme: 'light',
+  language: 'english',
   autoSave: 'no',
 };
 

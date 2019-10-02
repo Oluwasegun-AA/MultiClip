@@ -12,9 +12,8 @@ const delay = select('#delay');
 const theme = select('#theme');
 const autoSave = select('#autoSave');
 const saveBtn = select('.saveButton');
-const lang = select('.lang');
+const lang = select('#lang');
 const hi = select('#hi');
-// const dataReload = select('[data-reload]');
 const saveDiv = select('.saveDiv');
 const warningDiv = select('.warningDiv');
 const restoreDefault = select('.restoreDefault');
@@ -31,8 +30,8 @@ const translateMenu = selectAll(
 
 // language translations objects
 const language = {
-  eng: {
-    Language: 'welcome everyone'
+  english: {
+    Language: 'welcome'
   },
   french: {
     Language: 'lingua'
@@ -47,8 +46,18 @@ const initializeValues = values => {
   delay.value = values.delay;
   theme.value = values.theme;
   autoSave.value = values.autoSave;
-  // lang.value = values.lang;
 };
+
+// define language via window hash
+lang.addEventListener('change', () => {
+  if (window.location.hash) {
+    if (window.location.hash === '#french') {
+      console.log(language.french.Language);
+      hi.textContent = language.french.Language;
+      return hi.textContent;
+    }
+  }
+});
 
 chrome.storage.sync.get('settings', items => {
   const { theme } = items.settings;
@@ -62,40 +71,25 @@ const getNewSettings = () => {
   const themeOptions = theme.options;
   const selectedTheme = theme.selectedIndex;
   const autoSaveOptions = autoSave.options;
-  // const newLanguage = lang.options;
+  const newLanguage = hi.textContent;
   const selectedAutoSave = autoSave.selectedIndex;
   const newDelay = parseInt(delayOptions[selectedDelay].value, 10);
   const newSettings = {
     date: newDelay > 0 ? new Date().getUTCDay() : '',
     delay: newDelay,
-    // language: newLanguage,
+    language: newLanguage,
     theme: themeOptions[selectedTheme].value,
     autoSave: autoSaveOptions[selectedAutoSave].value,
   };
+  console.log(newSettings);
   return newSettings;
 };
-
-// define language via window hash
-
-lang.addEventListener('click', () => {
-  if (window.location.hash) {
-    if (window.location.hash === '#french') {
-      hi.textContent = language.french.welcome;
-    }
-  }
-});
 
 saveBtn.addEventListener('click', () => {
   chrome.storage.sync.set({ settings: getNewSettings() }, () => {
     chrome.storage.sync.get('settings', items => {
       const { theme } = items.settings;
       initializeTheme(theme, documentBody, footerWithHeader, elements);
-      // // define language via window hash
-      // if (window.location.hash) {
-      //   if (window.location.hash === '#french') {
-      //     hi.textContent = language.french.welcome;
-      //   }
-      // }
     });
   });
   saveDiv.style.display = 'none';
