@@ -1,5 +1,9 @@
 import { saveToClips } from '../common/index';
 
+/**
+ * @description reads the content of the clipboard
+ * @param {Function} callback function to execute after clipboard is copied
+ */
 const readClipBoard = (callback) => {
   navigator.clipboard
     .readText()
@@ -14,7 +18,10 @@ const readClipBoard = (callback) => {
     });
 };
 
-const copyMultiClip = () => {
+/**
+ * @description copied item users save to the clipboard if authorized to do so
+ */
+const copyClipboardItem = () => {
   chrome.storage.sync.get('settings', items => {
     if (items.settings.autoSave === 'yes') {
       return readClipBoard(saveToClips);
@@ -23,5 +30,5 @@ const copyMultiClip = () => {
 };
 
 document.addEventListener('copy', () => {
-  copyMultiClip();
+  copyClipboardItem();
 });

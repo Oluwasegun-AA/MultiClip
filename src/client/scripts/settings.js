@@ -1,10 +1,5 @@
-import {
-  initializeTheme,
-  defaultSettings,
-  navigateTo,
-} from '../../common/index';
-
-import setI18Value from './utils';
+import { defaultSettings, navigateTo } from '../../common/index';
+import { setLanguage, initializeTheme } from './utils';
 
 const select = document.querySelector.bind(document);
 const selectAll = document.querySelectorAll.bind(document);
@@ -12,52 +7,36 @@ const delay = select('#delay');
 const theme = select('#theme');
 const autoSave = select('#autoSave');
 const saveBtn = select('.saveButton');
-const lang = select('#lang');
-const hi = select('#hi');
+const language = select('#language');
 const saveDiv = select('.saveDiv');
 const warningDiv = select('.warningDiv');
 const restoreDefault = select('.restoreDefault');
 const bugReport = select('.bugReport');
 const documentBody = select('body');
 const elements = selectAll(
-  '.bugReport, .restoreDefault, .backBtn, .options, .settings, .tag'
+  '.bugReport, .restoreDefault, .back, .options, .settings, .tag'
 );
 const footerWithHeader = selectAll('.footer, .header');
 
 const translateMenu = selectAll(
-  '.settings, .note, .noteText, .bugReport, .saveButton, .restoreDefault, .no1, .no2, .no3, .no4, .no5, .no6, .no7, .no8, .no9, .no0, .dark, .light, .yes, .no'
+  '.settings, .note, .noteText, .bugReport, .saveButton, .restoreDefault, .no1, .no2, .no3, .no4, .no5, .no6, .no7, .no8, .no9, .no0, .dark, .light, .yes, .no, .clearClipAfter, .theme, .language, .autoSave, .back'
 );
 
-// language translations objects
-const language = {
-  english: {
-    Language: 'welcome'
-  },
-  french: {
-    Language: 'lingua'
-  }
-};
+setLanguage(translateMenu);
 
-translateMenu.forEach(btn => {
-  setI18Value(btn);
-});
-
+/**
+ * @description set the selected value of the delay, autoSave and theme settings to specified values
+ * @param {Object} values object containing specified values
+ */
 const initializeValues = values => {
   delay.value = values.delay;
   theme.value = values.theme;
   autoSave.value = values.autoSave;
+  language.value = values.language;
 };
 
 // define language via window hash
-lang.addEventListener('change', () => {
-  if (window.location.hash) {
-    if (window.location.hash === '#french') {
-      console.log(language.french.Language);
-      hi.textContent = language.french.Language;
-      return hi.textContent;
-    }
-  }
-});
+language.addEventListener('change', () => {});
 
 chrome.storage.sync.get('settings', items => {
   const { theme } = items.settings;
@@ -65,23 +44,27 @@ chrome.storage.sync.get('settings', items => {
   initializeTheme(theme, documentBody, footerWithHeader, elements);
 });
 
+/**
+ * @description gets the value in the settings field
+ * @returns {Object} object containing the settings
+ */
 const getNewSettings = () => {
   const delayOptions = delay.options;
   const selectedDelay = delay.selectedIndex;
   const themeOptions = theme.options;
   const selectedTheme = theme.selectedIndex;
   const autoSaveOptions = autoSave.options;
-  const newLanguage = hi.textContent;
+  const languageOptions = language.options;
+  const selectedLanguage = language.selectedIndex;
   const selectedAutoSave = autoSave.selectedIndex;
   const newDelay = parseInt(delayOptions[selectedDelay].value, 10);
   const newSettings = {
     date: newDelay > 0 ? new Date().getUTCDay() : '',
     delay: newDelay,
-    language: newLanguage,
+    language: languageOptions[selectedLanguage].value,
     theme: themeOptions[selectedTheme].value,
     autoSave: autoSaveOptions[selectedAutoSave].value,
   };
-  console.log(newSettings);
   return newSettings;
 };
 
@@ -90,6 +73,7 @@ saveBtn.addEventListener('click', () => {
     chrome.storage.sync.get('settings', items => {
       const { theme } = items.settings;
       initializeTheme(theme, documentBody, footerWithHeader, elements);
+      setLanguage(translateMenu);
     });
   });
   saveDiv.style.display = 'none';

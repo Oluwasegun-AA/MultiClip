@@ -52,7 +52,7 @@
     "description": "Note text"
   },
   "clearClipAfter": {
-    "message": "Effacer le presse-papiers après:",
+    "message": " Effacer mémoire après:",
     "description": "clip board clear option"
   },
   "theme": {
@@ -60,8 +60,16 @@
     "description": "select theme"
   },
   "autoSave": {
-    "message": "Enregistrement automatique sur copie",
+    "message": "copie atuto sur coller",
     "description": "auto save preference"
+  },
+  "language": {
+    "message": "langue:",
+    "description": "preferred language"
+  },
+  "preview": {
+    "message": "APERÇU",
+    "description": "preview clips"
   },
   "yes": {
     "message": "Oui",

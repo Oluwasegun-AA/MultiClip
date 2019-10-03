@@ -1,5 +1,5 @@
 {
-  "name": "EasyRead",
+  "name": "MultiClip",
   "version": "1.0.0",
   "description": "Chrome Extension to copy multiple items and selectively paste where required",
   "main": "background.js",
@@ -12,8 +12,8 @@
   "homepage": "https://github.com/Oluwasegun-AA/MultiClip#readme",
   "scripts": {
     "clear-pem": "rm -rf node_modules/public-encrypt/test",
-    "compile":"yarn clear-pem && yarn build && yarn bundle",
-    "bundle": "webpack --mode production",
+    "compile": "yarn clear-pem && yarn build && yarn bundle",
+    "bundle": "webpack --mode development",
     "build": "yarn clear && babel ./src/client/views ./src/client/assets ./src/client/styles -d public/client --copy-files",
     "clear": "rimraf public",
     "pretty": "./node_modules/.bin/prettier --single-quote --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",

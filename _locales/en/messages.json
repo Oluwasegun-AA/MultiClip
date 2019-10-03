@@ -63,6 +63,14 @@
     "message": "AutoSave on Copy:",
     "description": "auto save preference"
   },
+  "language": {
+    "message": "Language:",
+    "description": "preferred language"
+  },
+  "preview": {
+    "message": "PREVIEW",
+    "description": "preview clips"
+  },
   "yes": {
     "message": "Yes",
     "description": "select Value"

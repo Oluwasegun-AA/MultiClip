@@ -1,3 +1,8 @@
+/**
+ * @description checks if the item to be saved already exists in the oldClips
+ * @param {Object} oldClips  an object containing all initially saved clips
+ * @param {String} newClip   the trimmed string to be added to MultiClip
+ */
 const checkClipExist = (oldClips, newClip) => {
   const clips = Object.keys(oldClips);
   return clips.every(key => oldClips[key] !== newClip);
@@ -7,10 +12,14 @@ const defaultSettings = {
   date: new Date().getUTCDay(),
   delay: 7,
   theme: 'light',
-  language: 'english',
+  language: 'en',
   autoSave: 'no',
 };
 
+/**
+ * @description saves string to MultiClip storage
+ * @param {String} text string to be saved
+ */
 const saveToClips = text => {
   chrome.storage.sync.get('clips', items => {
     const allClips = items.clips;
@@ -31,35 +40,19 @@ const saveToClips = text => {
   });
 };
 
+/**
+ * @description sets the badge on the extension icon
+ * @param {Number} number the integer value to be displayed on the badge
+ */
 const showBadge = number => {
   chrome.browserAction.setBadgeText({ text: `${number}` });
 };
 
-const initializeTheme = (theme, documentBody, footerWithHeader, elements) => {
-  if (theme === 'dark') {
-    documentBody.style.backgroundColor = '#2f2d2d';
-    documentBody.style.color = '#d6d3d3';
-    footerWithHeader.forEach(item => {
-      item.style.backgroundColor = '#2f2d2d';
-    });
-    elements.forEach(view => {
-      view.style.backgroundColor = '#2f2d2d';
-      view.style.border = 'none';
-      view.style.color = '#d6d3d3';
-    });
-  } else {
-    documentBody.style.backgroundColor = 'white';
-    documentBody.style.color = 'black';
-    footerWithHeader.forEach(item => {
-      item.style.backgroundColor = 'white';
-    });
-    elements.forEach(view => {
-      view.style.backgroundColor = 'white';
-      view.style.color = 'black';
-    });
-  }
-};
 
+/**
+ * @description navigates to specified URL on a new tab
+ * @param {String} URL the link(url) to be navigated to
+ */
 const navigateTo = URL => {
   chrome.tabs.create({ url: URL });
 };
@@ -69,6 +62,5 @@ export {
   defaultSettings,
   saveToClips,
   showBadge,
-  initializeTheme,
   navigateTo
 };

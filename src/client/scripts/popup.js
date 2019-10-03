@@ -1,10 +1,5 @@
-import {
-  showBadge,
-  initializeTheme,
-  checkClipExist,
-  navigateTo,
-} from '../../common/index';
-import setI18Value from './utils';
+import { showBadge, checkClipExist, navigateTo } from '../../common/index';
+import { initializeTheme, setLanguage } from './utils';
 
 const select = document.querySelector.bind(document);
 const selectAll = document.querySelectorAll.bind(document);
@@ -17,7 +12,7 @@ const clipSection = select('.clips');
 const singleClip = select('.clips');
 const hint = select('.hint');
 const copyPrompt = select('.copyPrompt');
-const hintText = select('.hintText');
+const preview = select('.preview');
 const text = select('.text');
 const bugReport = select('.bugReport');
 const documentBody = select('body');
@@ -26,9 +21,10 @@ const elements = selectAll(
 );
 const footerWithHeader = selectAll('.footer, .header');
 const translateMenu = selectAll(
-  '.settings, .clearAll, .bugReport, .emptyPrompt, .copyPrompt'
+  '.settings, .clearAll, .bugReport, .emptyPrompt, .copyPrompt, .preview'
 );
 
+// set empty view when there are no clips
 const setEmptyView = () => {
   hint.style.display = 'none';
   emptyPrompt.style.display = 'block';
@@ -40,10 +36,13 @@ const setEmptyView = () => {
   showBadge('');
 };
 
-translateMenu.forEach(btn => {
-  setI18Value(btn);
-});
+// initialize translation
+setLanguage(translateMenu);
 
+/**
+ * @description populates view with clips
+ * @param {Object} clips object containing all clips
+ */
 const addClips = clips => {
   let data = '';
   Object.keys(clips).forEach(key => {
@@ -74,6 +73,12 @@ chrome.storage.sync.get('clips', items => {
   }
 });
 
+/**
+ * @description clears clips on the set date
+ * @param {Object} settings settings object
+ * @param {Number} delay the set self destruct days interval
+ * @param {Number} datePassed date expended
+ */
 const clearOnSetDate = (settings, delay, datePassed) => {
   if (datePassed >= delay) {
     chrome.storage.sync.set({
@@ -148,14 +153,14 @@ select('.clipText').addEventListener('keypress', e => {
 
 singleClip.addEventListener('mouseover', e => {
   if (e.target.className === 'content') {
-    hintText.style.display = 'none';
+    preview.style.display = 'none';
     text.style.display = 'block';
     text.innerHTML = e.target.innerText.trim();
   }
 });
 
 singleClip.addEventListener('mouseout', () => {
-  hintText.style.display = 'block';
+  preview.style.display = 'block';
   text.style.display = 'none';
 });
 
@@ -188,6 +193,10 @@ singleClip.addEventListener('click', e => {
   }
 });
 
+/**
+ * @description saves items from multiClip storage to device clipboard
+ * @param {string} data string to be saved to the clipBoard
+ */
 const copyToClipBoard = data => {
   navigator.clipboard.writeText(data);
 };

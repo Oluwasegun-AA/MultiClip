@@ -25,11 +25,11 @@ MultiClip is a chrome extension which makes it easy to save multiple items into 
 ## Project Overview
 Having had several stressful moments, going back and forth between browser tabs while trying to copy sets of disjointed contents to be used on another, I saw the need for this extension.
 
-other browser extensions of this like however exists, but the few good ones are not maintained, buggy and above all failed to generate the desired utility.
+other browser extensions of this like however exists, but the few good ones are not maintained/buggy, restricted to 10 free clips and above all failed to generate the desired utility.
 
 The extension was designed to give users added levels of flexibility among which are the dark mode, flexible auto clear, optional binding to the `copy` events, and optional language features.
 
-MultiClip keeps track of changes to the clipboard by retaining a copy of all clipped items so as to make them reusable until you do decide to discard them.
+MultiClip keeps track of changes to the clipboard by retaining a copy of all clipped items so as to make them reusable until you decide to discard them.
 
 
 ## Features
