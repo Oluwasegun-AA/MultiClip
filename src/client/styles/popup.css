@@ -57,7 +57,7 @@ body {
 
 .restoreDefault,
 .logo,
-.backBtn,
+.back,
 .deleteClip,
 .clearAll,
 .bugReport,
@@ -158,7 +158,7 @@ a:hover {
   padding: 10px 8px 10px 10px;
 }
 
-.hintText {
+.preview {
   color: #a19e9e;
   text-align: center;
 }

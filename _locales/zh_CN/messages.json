@@ -63,6 +63,14 @@
     "message": "复制时自动保存:",
     "description": "auto save preference"
   },
+  "language": {
+    "message": "语言:",
+    "description": "preferred language"
+  },
+  "preview": {
+    "message": "预习",
+    "description": "preview clips"
+  },
   "yes": {
     "message": "是的",
     "description": "select Value"

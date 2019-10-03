@@ -60,8 +60,16 @@
     "description": "select theme"
   },
   "autoSave": {
-    "message": "hifz tilqayiy ealaa nuskha:",
+    "message": "hifz alsayarat:",
     "description": "auto save preference"
+  },
+  "language": {
+    "message": "lugha:",
+    "description": "preferred language"
+  },
+  "preview": {
+    "message": "ALMUEAYINA",
+    "description": "preview clips"
   },
   "yes": {
     "message": "nem",

@@ -13,7 +13,10 @@ h5 {
   margin: 4px 2px 4px 2px;
 }
 
-.tag {
+.clearClipAfter,
+.theme,
+.language,
+.autoSave {
   font-size: 12px;
 }
 

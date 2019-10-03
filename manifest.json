@@ -10,6 +10,7 @@
     "scripts": ["public/src/background.js"],
     "persistent": false
   },
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
   "browser_action": {
     "default_icon": {
       "16": "src/client/assets/icon.png",

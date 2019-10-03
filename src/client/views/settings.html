@@ -7,19 +7,25 @@
   </head>
   <body>
     <div class="header">
+      <div>
+      <span> &#x21FD;</span>
       <a href="popup.html">
-        <span class="backBtn">
-          &#x21FD; Back
+        <span class="back">
+          Back
         </span>
       </a>
+      </div>
     </div>
     <!-- <button id="changeColor"></button> -->
     <div class="body">
-        <noscript>This Extension requires JavaScript be available and enabled to function properly</noscript>
+      <noscript
+        >This Extension requires JavaScript be available and enabled to function
+        properly</noscript
+      >
       <h5 class="settings">Settings</h5>
       <div class="options">
         <div class="menu">
-          <span class="tag">Clear Clipboard After:</span>
+          <span class="clearClipAfter">Clear Clipboard After:</span>
           <select id="delay">
             <option class="no1" value="1">1 day</option>
             <option class="no2" value="2">2 days</option>
@@ -32,36 +38,49 @@
           </select>
         </div>
         <div class="menu">
-            <span class="tag">Theme:</span>
-            <select id="theme">
-              <option class="dark" value="dark">Dark</option>
-              <option class="light" selected value="light">Light</option>
-            </select>
-          </div>
+          <span class="theme">Theme:</span>
+          <select id="theme">
+            <option class="dark" value="dark">Dark</option>
+            <option class="light" selected value="light">Light</option>
+          </select>
+        </div>
       </div>
-        <div class="menu">
-            <span class="tag">AutoSave on Copy:</span>
-            <select id="autoSave">
-              <option class="yes" value="yes">Yes</option>
-              <option class="no" selected value="no">No</option>
-            </select>
-          </div>
+      <div class="menu">
+        <span class="language">Language:</span>
+        <select id="language">
+          <option class="fr" value="fr" data-reload>French</option>
+          <option class="en" selected value="en">English</option>
+          <option class="zh_CN" value="zh_CN">Chinese</option>
+          <option class="ar" value="ar">Arabic</option>
+          <option class="default" value="default">Chrome's Default</option>
+        </select>
+      </div>
+      <div class="menu">
+        <span class="autoSave">AutoSave on Copy:</span>
+        <select id="autoSave">
+          <option class="yes" value="yes">Yes</option>
+          <option class="no" selected value="no">No</option>
+        </select>
       </div>
     </div>
     <div class="warningDiv">
       <span class="note"><strong>Note:</strong></span>
-      <span class="noteText">Setting AutoSave to <i>"yes"</i> requires you to give Clipboard permission to every page</span>
+      <span class="noteText"
+        >Setting AutoSave to <i>"yes"</i> requires you to give Clipboard
+        permission to every page</span
+      >
     </div>
     <div class="saveDiv">
       <button class="saveButton">Save</button>
     </div>
     <div class="footer">
       <span class="restoreDefault"> Default Settings </span>
-      <span > 
+      <span>
         <span>
-          &#x1F41E; 
+          &#x1F41E;
         </span>
-        <span class="bugReport">Report a Bug </span></span>
+        <span class="bugReport">Report a Bug </span></span
+      >
     </div>
   </body>
 </html>
