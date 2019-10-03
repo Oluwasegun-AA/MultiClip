@@ -46,7 +46,11 @@ MultiClip keeps track of changes to the clipboard by retaining a copy of all cli
 - [ ] Four optional languages to select from i.e. `English`, `Chinese`, `French` and `Arabic`
 
 ## Demo
-![MultiClip demo](https://user-images.githubusercontent.com/25525765/65558184-0795da00-df36-11e9-8b48-b064d4d42082.gif)
+<p align="center">
+  <a href="" target="">
+    <img src="https://user-images.githubusercontent.com/25525765/65558184-0795da00-df36-11e9-8b48-b064d4d42082.gif" alt="Demo">
+  </a>
+</p>
 
 ## Known issues
 No known [issues](https://github.com/Oluwasegun-AA/MultiClip/issues) at the moment. However, [issues](https://github.com/Oluwasegun-AA/MultiClip/issues) can be raised when such is noticed
@@ -66,7 +70,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
-<table><tr><td align="center"><a href="https://github.com/Oluwasegun-AA"><img src="https://avatars0.githubusercontent.com/u/25525765?v=4" width="100px;" alt="Adépòjù Olúwáségun"/><br /><sub><b>Adépòjù Olúwáségun</b></sub></a><br /><a href="https://github.com/Adépòjù Olúwáségun/MultiClip/issues?q=author%3AOluwasegun-AA" title="Bug reports">🐛</a> <a href="https://github.com/Adépòjù Olúwáségun/MultiClip/commits?author=Oluwasegun-AA" title="Code">💻</a> <a href="https://github.com/Adépòjù Olúwáségun/MultiClip/commits?author=Oluwasegun-AA" title="Documentation">📖</a> <a href="#maintenance-Oluwasegun-AA" title="Maintenance">🚧</a></td><td align="center"><a href="https://github.com/deschantkn"><img src="https://avatars2.githubusercontent.com/u/50397889?v=4" width="100px;" alt="Deschant Kounou"/><br /><sub><b>Deschant Kounou</b></sub></a><br /><a href="https://github.com/Adépòjù Olúwáségun/MultiClip/commits?author=deschantkn" title="Code">💻</a> <a href="#translation-deschantkn" title="Translation">🌍</a></td></tr></table>
+<table><tr><td align="center"><a href="https://github.com/Oluwasegun-AA"><img src="https://avatars0.githubusercontent.com/u/25525765?v=4" width="100px;" alt="Adépòjù Olúwáségun"/><br /><sub><b>Adépòjù Olúwáségun</b></sub></a><br /> <a href="https://github.com/Adépòjù Olúwáségun/MultiClip/commits?author=Oluwasegun-AA" title="Code">💻</a> <a href="https://github.com/Adépòjù Olúwáségun/MultiClip/commits?author=Oluwasegun-AA" title="Documentation">📖</a> <a href="#maintenance-Oluwasegun-AA" title="Maintenance">🚧</a></td><td align="center"><a href="https://github.com/deschantkn"><img src="https://avatars2.githubusercontent.com/u/50397889?v=4" width="100px;" alt="Deschant Kounou"/><br /><sub><b>Deschant Kounou</b></sub></a><br /> <a href="#translation-deschantkn" title="Translation">🌍</a></td><td align="center"><a href="https://ekumamait.github.io/Profile/UI/"><img src="https://avatars2.githubusercontent.com/u/9946845?v=4" width="100px;" alt="Eric Ebulu"/><br /><sub><b>Eric Ebulu</b></sub></a><br /><a href="https://github.com/Adépòjù Olúwáségun/MultiClip/commits?author=ekumamait" title="Code">💻</a> <a href="#ideas-ekumamait" title="Ideas, Planning, & Feedback">🤔</a></td></tr></table>
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind are welcome!
