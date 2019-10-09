@@ -8,12 +8,21 @@ const checkClipExist = (oldClips, newClip) => {
   return clips.every(key => oldClips[key] !== newClip);
 };
 
+// default settings for multiClip
 const defaultSettings = {
   date: new Date().getUTCDay(),
   delay: 7,
   theme: 'light',
-  language: 'en',
+  language: 'default',
   autoSave: 'no',
+};
+
+/**
+ * @description sets the badge on the extension icon
+ * @param {Number} number the integer value to be displayed on the badge
+ */
+const showBadge = number => {
+  chrome.browserAction.setBadgeText({ text: `${number}` });
 };
 
 /**
@@ -33,21 +42,13 @@ const saveToClips = text => {
         [maxId + 1]: itemToClip,
       };
       chrome.storage.sync.set({ clips });
+      showBadge(Object.keys(clips).length);
     } else if (!clipExist && itemToClipIsValid) {
       const clips = { 1: text };
       chrome.storage.sync.set({ clips });
     }
   });
 };
-
-/**
- * @description sets the badge on the extension icon
- * @param {Number} number the integer value to be displayed on the badge
- */
-const showBadge = number => {
-  chrome.browserAction.setBadgeText({ text: `${number}` });
-};
-
 
 /**
  * @description navigates to specified URL on a new tab

@@ -40,6 +40,17 @@
         "code",
         "ideas"
       ]
+    },
+    {
+      "login": "Mirriam-Maina",
+      "name": "Mirriam",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/31400129?v=4",
+      "profile": "https://github.com/Mirriam-Maina",
+      "contributions": [
+        "code",
+        "doc",
+        "translation"
+      ]
     }
   ],
   "contributorsPerLine": 7
