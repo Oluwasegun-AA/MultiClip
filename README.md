@@ -6,7 +6,7 @@
 
 <p align="center">
 <a href="https://codeclimate.com/github/Oluwasegun-AA/MultiClip/maintainability"><img src="https://api.codeclimate.com/v1/badges/c760dd1c8f7c08058e89/maintainability" alt="Version"></a>
-<a href="#contributors"><img src="https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square" alt="Version"></a>
+<a href="#contributors"><img src="https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square" alt="Version"></a>
 </p>
 
 <h2 align="center">MultiClip</h2>
@@ -43,7 +43,7 @@ MultiClip keeps track of changes to the clipboard by retaining a copy of all cli
 - [x] Dark Mode Option (settings)
 - [x] Auto delete after specified number of days (settings)
 - [x] Optional auto save on copy with/without copy-specific key-bindings (settings)
-- [ ] Four optional languages to select from i.e. `English`, `Chinese`, `Swahili`, `French` and `Arabic`
+- [x] Four optional languages to select from i.e. `English`, `Chinese`, `Swahili`, `French` and `Arabic`
 
 ## Demo
 <p align="center">
