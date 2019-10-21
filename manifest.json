@@ -13,18 +13,18 @@
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
   "browser_action": {
     "default_icon": {
-      "16": "src/client/assets/icon.png",
-      "32": "src/client/assets/icon.png",
-      "48": "src/client/assets/icon.png",
-      "128": "src/client/assets/icon.png"
+      "16": "public/client/icon.png",
+      "32": "public/client/icon.png",
+      "48": "public/client/icon.png",
+      "128": "public/client/icon.png"
     },
     "default_popup": "public/client/popup.html"
   },
   "icons": {
-    "16": "src/client/assets/icon.png",
-    "32": "src/client/assets/icon.png",
-    "48": "src/client/assets/icon.png",
-    "128": "src/client/assets/icon.png"
+    "16": "public/client/icon.png",
+    "32": "public/client/icon.png",
+    "48": "public/client/icon.png",
+    "128": "public/client/icon.png"
   },
   "permissions": [
     "activeTab",

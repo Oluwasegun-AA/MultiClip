@@ -19,7 +19,10 @@ const elements = selectAll(
 const footerWithHeader = selectAll('.footer, .header');
 
 const translateMenu = selectAll(
-  '.settings, .note, .noteText, .bugReport, .saveButton, .restoreDefault, .no1, .no2, .no3, .no4, .no5, .no6, .no7, .no8, .no9, .no0, .dark, .light, .yes, .no, .clearClipAfter, .theme, .language, .autoSave, .back'
+  `.settings, .note, .noteText, .bugReport, .saveButton,
+   .restoreDefault, .no1, .no2, .no3, .no4, .no5, .no6,
+    .no7, .no8, .no9, .no0, .dark, .light, .yes, .no,
+     .clearClipAfter, .theme, .language, .autoSave, .back`
 );
 
 setLanguage(translateMenu);

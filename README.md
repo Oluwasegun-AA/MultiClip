@@ -43,13 +43,16 @@ MultiClip keeps track of changes to the clipboard by retaining a copy of all cli
 - [x] Dark Mode Option (settings)
 - [x] Auto delete after specified number of days (settings)
 - [x] Optional auto save on copy with/without copy-specific key-bindings (settings)
-- [x] Four optional languages to select from i.e. `English`, `Chinese`, `Swahili`, `French` and `Arabic`
+- [x] Four optional languages to select from i.e. `English`, `Chinese`, `Swahili`, `French`, `Yoruba` and `Arabic`
+- [x] Notepad feature (where you type (manually written text) into the clipboard )
+- [x] No Limit (you can create as many clips as desired)
 
 ## Demo
 <p align="center">
   <a href="" target="">
     <img src="https://user-images.githubusercontent.com/25525765/65558184-0795da00-df36-11e9-8b48-b064d4d42082.gif" alt="Demo">
   </a>
+    <p align="center" target="_blank">Please Find the Full Demo <a href="https://youtu.be/uYmcyTXQeE4" target="_blank" >HERE</a></p>
 </p>
 
 ## Known issues
