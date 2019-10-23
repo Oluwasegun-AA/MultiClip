@@ -1,0 +1,122 @@
+{
+  "name": {
+    "message": "MultiClip",
+    "description": "Extension Name"
+  },
+  "description": {
+    "message": "MultiClip makes it easy to save multiple items into its clipboard, preview and selectively paste them when needed",
+    "description": "extension description"
+  },
+  "settings": {
+    "message": "Atúntò",
+    "description": "switch to settings view"
+  },
+  "clearAll": {
+    "message": "Pa gbogbo rè ré",
+    "description": "clear all clips"
+  },
+  "bugReport": {
+    "message": "Safihan aise dáadáa",
+    "description": "raise issues"
+  },
+  "emptyPrompt": {
+    "message": "ClipBoard sóófo",
+    "description": "clipboard empty prompt"
+  },
+  "copyPrompt": {
+    "message": "Copy pelu Ctrl+C tàbí Cmd+C tàbí kí o te òrò náà síbí",
+    "description": "usage hint"
+  },
+  "default": {
+    "message": "dáapadà sí bósewá",
+    "description": "reset to default settings"
+  },
+  "back": {
+    "message": "Padà",
+    "description": "return to main view"
+  },
+  "restoreDefault": {
+    "message": "Dáapadà sí bósewá",
+    "description": "return to main view"
+  },
+  "saveButton": {
+    "message": "Fipamó",
+    "description": "save button"
+  },
+  "note": {
+    "message": "<strong>Àkíyèsí:</strong>",
+    "description": "Note text"
+  },
+  "noteText": {
+    "message": "Bí o bá mún <i>\"Béèni\"</i> o yóò ma fún gbogbo websiiti lase láàti fi oun tóo bá copy pamó",
+    "description": "Note text"
+  },
+  "clearClipAfter": {
+    "message": "Pa Clipboard ré léyìn:",
+    "description": "clip board clear option"
+  },
+  "theme": {
+    "message": "Àwọ:",
+    "description": "select theme"
+  },
+  "autoSave": {
+    "message": "Sáàfù pèlú Ctrl+C:",
+    "description": "auto save preference"
+  },
+  "language": {
+    "message": "Èdè:",
+    "description": "preferred language"
+  },
+  "preview": {
+    "message": "GBEYÈWÒ NÍBÍ",
+    "description": "preview clips"
+  },
+  "yes": {
+    "message": "Béèni",
+    "description": "select Value"
+  },
+  "no": {
+    "message": "Rárá",
+    "description": "select value"
+  },
+  "light": {
+    "message": "Funfun",
+    "description": "theme option"
+  },
+  "dark": {
+    "message": "Dúdú",
+    "description": "theme option"
+  },
+  "no1": {
+    "message": "ọjó kan",
+    "description": "auto delete interval"
+  },
+  "no2": {
+    "message": "ọjó Méjì",
+    "description": "auto delete interval"
+  },
+  "no3": {
+    "message": "ọjó Méta",
+    "description": "auto delete interval"
+  },
+  "no4": {
+    "message": "ọjó Mérin",
+    "description": "auto delete interval"
+  },
+  "no5": {
+    "message": "ọjó Máàrún",
+    "description": "auto delete interval"
+  },
+  "no6": {
+    "message": "ọjó Mêfà",
+    "description": "auto delete interval"
+  },
+  "no7": {
+    "message": "ọjó Méje",
+    "description": "auto delete interval"
+  },
+  "no0": {
+    "message": "Rárá",
+    "description": "auto delete interval"
+  }
+}
