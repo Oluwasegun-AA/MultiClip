@@ -61,6 +61,8 @@ No known [issues](https://github.com/Oluwasegun-AA/MultiClip/issues) at the mome
 ## Installation
 The extension is available on the `Chrome store` via `https://chrome.google.com/webstore/detail/multiclip/kgifojlpdkhneaaefefmhpijbnmmdpeb?authuser=2`
 
+[click here to add to chrome](https://chrome.google.com/webstore/detail/multiclip/kgifojlpdkhneaaefefmhpijbnmmdpeb?authuser=2)
+
 ## Contributing
 >  Feel free to contribute and kindly ensure to go through the Pull Request guide, and contributing.md file
 
