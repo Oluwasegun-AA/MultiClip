@@ -59,7 +59,7 @@ MultiClip keeps track of changes to the clipboard by retaining a copy of all cli
 No known [issues](https://github.com/Oluwasegun-AA/MultiClip/issues) at the moment. However, [issues](https://github.com/Oluwasegun-AA/MultiClip/issues) can be raised when such is noticed
 
 ## Installation
-The extension is available on the `Chrome store` via `{ loading . . .}`
+The extension is available on the `Chrome store` via `https://chrome.google.com/webstore/detail/multiclip/kgifojlpdkhneaaefefmhpijbnmmdpeb?authuser=2`
 
 ## Contributing
 >  Feel free to contribute and kindly ensure to go through the Pull Request guide, and contributing.md file
