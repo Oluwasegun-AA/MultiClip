@@ -5,7 +5,6 @@
 </p>
 
 <p align="center">
-<a href="https://github.com/acekyd/made-in-nigeria"><img src="https://img.shields.io/badge/made%20in-nigeria-008751.svg?style=flat-square" alt="Made in Nigeria Badge"/></a>
 <a href="https://codeclimate.com/github/Oluwasegun-AA/MultiClip/maintainability"><img src="https://api.codeclimate.com/v1/badges/c760dd1c8f7c08058e89/maintainability" alt="Version"></a>
 <a href="#contributors"><img src="https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square" alt="Version"></a>
 </p>
