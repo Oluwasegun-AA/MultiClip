@@ -10,14 +10,16 @@ h5 {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 4px 2px 4px 2px;
+  margin: 4px 5px 4px 5px;
 }
 
 .clearClipAfter,
 .theme,
 .language,
 .autoSave {
-  font-size: 12px;
+  font-size: 15px;
+  height: 30px;
+  font-weight: 500;
 }
 
 select {
@@ -42,7 +44,9 @@ button {
 }
 
 .saveButton {
-  height: 20px;
+  font-size: 15px;
+  height: 24px;
+  width: 80px;
   margin: 5px 0px 3px 0px;
   background-color: rgb(237, 235, 235);
 }
@@ -55,7 +59,7 @@ button {
 .warningDiv {
   padding-left: 10px;
   display: none;
-  font-size: 10px;
+  font-size: 15px;
   border-top: 1px solid rgb(228, 221, 221);
   border-radius: 4px 4px 0px 0px;
 }
