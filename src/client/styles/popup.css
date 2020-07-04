@@ -156,7 +156,7 @@ a {
 }
 
 a:hover {
-  color: white;
+  color: rgb(239, 237, 237);
   text-decoration: none;
   cursor: pointer;
 }

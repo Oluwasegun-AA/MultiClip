@@ -79,13 +79,13 @@ const initializeTheme = (theme, documentBody, footerWithHeader, elements) => {
       view.style.setProperty('color', '#d6d3d3', 'important');
     });
   } else {
-    documentBody.style.setProperty('background-color', '#eeeeee', 'important');
+    documentBody.style.setProperty('background-color', 'white', 'important');
     documentBody.style.setProperty('color', 'black', 'important');
     footerWithHeader.forEach(item => {
       item.style.setProperty('background-color', '#eeeeee', 'important');
     });
     elements.forEach(view => {
-      view.style.setProperty('background-color', '#eeeeee', 'important');
+      view.style.setProperty('background-color', 'white', 'important');
       view.style.setProperty('color', 'black', 'important');
     });
   }

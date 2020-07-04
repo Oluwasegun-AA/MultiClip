@@ -63,3 +63,8 @@ button {
   border-top: 1px solid rgb(228, 221, 221);
   border-radius: 4px 4px 0px 0px;
 }
+
+.back:hover {
+  background-color: #eeeeee;
+  color: black;
+}

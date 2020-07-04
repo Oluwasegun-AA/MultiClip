@@ -17,11 +17,11 @@ const text = select('.text');
 const bugReport = select('.bugReport');
 const documentBody = select('body');
 const elements = selectAll(
-  '.bugReport, .clearAll, .emptyPrompt, .copyPrompt, .logo, .settings, a, span'
+  '.emptyPrompt, .copyPrompt'
 );
-const footerWithHeader = selectAll('.footer, .header');
+const footerWithHeader = selectAll('.footer, .header, .settings, .bugReport, .logo');
 const translateMenu = selectAll(
-  '.settings, .clearAll, .bugReport, .emptyPrompt, .copyPrompt, .preview'
+  '.emptyPrompt, .copyPrompt, .preview'
 );
 
 // set empty view when there are no clips
