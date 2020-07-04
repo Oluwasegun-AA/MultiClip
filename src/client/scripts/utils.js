@@ -68,25 +68,25 @@ const setPreferredTranslation = (language, translateMenu) => {
  */
 const initializeTheme = (theme, documentBody, footerWithHeader, elements) => {
   if (theme === 'dark') {
-    documentBody.style.backgroundColor = '#2f2d2d';
-    documentBody.style.color = '#d6d3d3';
+    documentBody.style.setProperty('background-color', '#2f2d2d', 'important');
+    documentBody.style.setProperty('color', '#d6d3d3', 'important');
     footerWithHeader.forEach(item => {
-      item.style.backgroundColor = '#2f2d2d';
+      item.style.setProperty('background-color', '#2f2d2d', 'important');
     });
     elements.forEach(view => {
-      view.style.backgroundColor = '#2f2d2d';
-      view.style.border = 'none';
-      view.style.color = '#d6d3d3';
+      view.style.setProperty('background-color', '#2f2d2d', 'important');
+      view.style.setProperty('border', 'none', 'important');
+      view.style.setProperty('color', '#d6d3d3', 'important');
     });
   } else {
-    documentBody.style.backgroundColor = 'white';
-    documentBody.style.color = 'black';
+    documentBody.style.setProperty('background-color', '#eeeeee', 'important');
+    documentBody.style.setProperty('color', 'black', 'important');
     footerWithHeader.forEach(item => {
-      item.style.backgroundColor = '#eeeeee';
+      item.style.setProperty('background-color', '#eeeeee', 'important');
     });
     elements.forEach(view => {
-      view.style.backgroundColor = 'white';
-      view.style.color = 'black';
+      view.style.setProperty('background-color', '#eeeeee', 'important');
+      view.style.setProperty('color', 'black', 'important');
     });
   }
 };

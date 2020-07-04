@@ -17,7 +17,7 @@ const text = select('.text');
 const bugReport = select('.bugReport');
 const documentBody = select('body');
 const elements = selectAll(
-  '.bugReport, .clearAll, .emptyPrompt, .copyPrompt, .logo, .settings'
+  '.bugReport, .clearAll, .emptyPrompt, .copyPrompt, .logo, .settings, a, span'
 );
 const footerWithHeader = selectAll('.footer, .header');
 const translateMenu = selectAll(
