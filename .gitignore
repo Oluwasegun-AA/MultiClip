@@ -61,5 +61,5 @@ typings/
 .next
 
 # ignore custom files
-/dist
-/public
+dist
+public

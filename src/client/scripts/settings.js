@@ -14,9 +14,9 @@ const restoreDefault = select('.restoreDefault');
 const bugReport = select('.bugReport');
 const documentBody = select('body');
 const elements = selectAll(
-  '.bugReport, .restoreDefault, .back, .options, .settings, .tag'
+  '.restoreDefault, .options, .settings, .tag'
 );
-const footerWithHeader = selectAll('.footer, .header');
+const footerWithHeader = selectAll('.footer, .header, .clearAll, .restoreDefault, .back, .bugReport');
 
 const translateMenu = selectAll(
   `.settings, .note, .noteText, .bugReport, .saveButton,
