@@ -1,6 +1,6 @@
 {
   "name": "MultiClip",
-  "version": "1.1.0",
+  "version": "0.3.0",
   "description": "Chrome Extension to copy multiple items and selectively paste where required",
   "main": "background.js",
   "keywords": [],
@@ -12,8 +12,8 @@
   "homepage": "https://github.com/Oluwasegun-AA/MultiClip#readme",
   "scripts": {
     "clear-pem": "rm -rf node_modules/public-encrypt/test",
-    "compile": "yarn build && yarn bundle",
     "bundle": "webpack --mode production",
+    "compile": "run-s build bundle",
     "build": "yarn clear && babel ./src/client/views ./src/client/assets ./src/client/styles -d public/client --copy-files",
     "clear": "rimraf public && yarn clear-pem",
     "pretty": "./node_modules/.bin/prettier --single-quote --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
@@ -53,8 +53,9 @@
     "eslint-plugin-import": "^2.18.2",
     "husky": "3.0.4",
     "lint-staged": "9.2.3",
+    "npm-run-all": "4.1.5",
     "prettier": "1.18.2",
-    "rimraf": "3.0.0",
+    "rimraf": "^3.0.2",
     "webpack": "4.41.0",
     "webpack-cli": "3.3.9"
   }

@@ -11,6 +11,7 @@ body {
   width: 460px;
   padding: 0px;
   margin: 0px;
+  overflow: hidden;
 }
 
 .header {
@@ -38,7 +39,6 @@ a > .back {
 
 .clip {
   overflow: hidden;
-
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -148,8 +148,14 @@ a {
 
 .clips {
   max-height: 400px;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
 
 a {
   text-decoration: none;
@@ -175,7 +181,7 @@ a:hover {
   color: #fff;
   padding: 5px 0;
   height: 60px;
-  overflow: scroll;
+  overflow: hidden;
   overflow-wrap: break-word;
   padding: 10px 8px 10px 10px;
 }
@@ -183,6 +189,7 @@ a:hover {
 .preview {
   color: #a19e9e;
   text-align: center;
+  overflow: hidden;
 }
 
 .text {
