@@ -72,6 +72,7 @@ const initializeTheme = (theme, documentBody, footerWithHeader, elements) => {
     documentBody.style.setProperty('color', '#d6d3d3', 'important');
     footerWithHeader.forEach(item => {
       item.style.setProperty('background-color', '#2f2d2d', 'important');
+      item.style.setProperty('color', '#d6d3d3', 'important');
     });
     elements.forEach(view => {
       view.style.setProperty('background-color', '#2f2d2d', 'important');
@@ -83,6 +84,7 @@ const initializeTheme = (theme, documentBody, footerWithHeader, elements) => {
     documentBody.style.setProperty('color', 'black', 'important');
     footerWithHeader.forEach(item => {
       item.style.setProperty('background-color', '#eeeeee', 'important');
+      item.style.setProperty('color', 'black', 'important');
     });
     elements.forEach(view => {
       view.style.setProperty('background-color', 'white', 'important');

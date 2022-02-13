@@ -1,6 +1,12 @@
 import { defaultSettings, showBadge } from '../common/index';
 import ContextMenuManager from './utils';
 
+// attach listeners
+chrome.contextMenus.onClicked.addListener((info, tab) => {
+  const { menuItemId } = info;
+  ContextMenuManager[menuItemId](info, tab);
+});
+
 chrome.runtime.onInstalled.addListener(() => {
   chrome.storage.sync.get('clips', item => {
     const memoryLength = Object.keys(item).length;
@@ -13,7 +19,7 @@ chrome.runtime.onInstalled.addListener(() => {
   chrome.storage.sync.get('settings', item => {
     if (Object.keys(item).length === 0) chrome.storage.sync.set({ settings: defaultSettings });
   });
-  chrome.browserAction.setBadgeBackgroundColor({ color: '#4688F1' });
+  chrome.action.setBadgeBackgroundColor({ color: '#4688F1' });
 });
 
 // Create contextMenus
@@ -34,8 +40,3 @@ chrome.contextMenus.create({
   contexts: ['page', 'browser_action'],
 });
 
-// attach listeners
-chrome.contextMenus.onClicked.addListener((info, tab) => {
-  const { menuItemId } = info;
-  ContextMenuManager[menuItemId](info, tab);
-});
