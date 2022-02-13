@@ -16,7 +16,7 @@ const documentBody = select('body');
 const elements = selectAll(
   '.restoreDefault, .options, .settings, .tag'
 );
-const footerWithHeader = selectAll('.footer, .header, .clearAll, .restoreDefault, .back, .bugReport');
+const footerWithHeader = selectAll('.footer, .header, .clearAll, .restoreDefault, .back, .bugReport, .saveDiv');
 
 const translateMenu = selectAll(
   `.settings, .note, .noteText, .bugReport, .saveButton,

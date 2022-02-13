@@ -22,7 +22,7 @@ const defaultSettings = {
  * @param {Number} number the integer value to be displayed on the badge
  */
 const showBadge = number => {
-  chrome.browserAction.setBadgeText({ text: `${number}` });
+  chrome.action.setBadgeText({ text: `${number}` });
 };
 
 /**
