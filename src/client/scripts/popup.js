@@ -52,7 +52,7 @@ const addClips = clips => {
             &#x2398;
             </span>
             <span id="no${key}" class="content">
-            ${clips[`${key}`]}
+            ${clips[`${key}`].replace(/&/g, '&amp;')}
             </span>
             <span class="deleteClip"> &#x274C; </span>
             </div>`;
@@ -155,7 +155,7 @@ singleClip.addEventListener('mouseover', e => {
   if (e.target.className === 'content') {
     preview.style.display = 'none';
     text.style.display = 'block';
-    text.innerHTML = e.target.innerText.trim();
+    text.innerHTML = e.target.innerText.trim().replace(/&/g, '&amp;');
   }
 });
 
@@ -205,9 +205,9 @@ singleClip.addEventListener('click', e => {
   const target = e.target.className;
   if (target === 'copy' || 'content') {
     if (target === 'content') {
-      copyToClipBoard(e.target.innerHTML.trim());
+      copyToClipBoard(e.target.innerHTML.trim().replace(/&amp;/g, '&'));
     } else if (target === 'copy') {
-      copyToClipBoard(e.target.nextElementSibling.innerHTML.trim());
+      copyToClipBoard(e.target.nextElementSibling.innerHTML.trim().replace(/&amp;/g, '&'));
     }
   }
 });
