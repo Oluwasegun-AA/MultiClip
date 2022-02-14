@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "__MSG_Name__",
   "description": "__MSG_description__",
-  "version": "0.40",
+  "version": "0.50",
   "author": "Adépòjù Olúwáségun",
   "default_locale": "en",
   "homepage_url": "https://github.com/Oluwasegun-AA/MultiClip",
