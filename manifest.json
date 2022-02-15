@@ -29,11 +29,9 @@
   },
   "permissions": [
     "activeTab",
-    "tabs",
     "contextMenus",
     "clipboardWrite",
     "clipboardRead",
-    "declarativeContent",
     "storage"
   ],
   "host_permissions": [
