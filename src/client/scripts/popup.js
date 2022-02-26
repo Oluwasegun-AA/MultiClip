@@ -15,6 +15,7 @@ const copyPrompt = select('.copyPrompt');
 const preview = select('.preview');
 const text = select('.text');
 const bugReport = select('.bugReport');
+const kofi = select('.kofi');
 const documentBody = select('body');
 const elements = selectAll(
   '.emptyPrompt, .copyPrompt, .clipText, .deleteClip'
@@ -214,6 +215,10 @@ singleClip.addEventListener('click', e => {
 
 bugReport.addEventListener('click', () => {
   navigateTo('https://github.com/Oluwasegun-AA/MultiClip/issues');
+});
+
+kofi.addEventListener('click', () => {
+  navigateTo('https://ko-fi.com/oluwasegun');
 });
 
 logo.addEventListener('click', () => {

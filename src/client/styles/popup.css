@@ -90,6 +90,7 @@ a {
 }
 
 .clearAll,
+.kofi,
 .restoreDefault {
   padding: 2px;
   border: 1px solid rgb(155, 93, 93);
@@ -144,7 +145,7 @@ h5 {
 }
 
 .content {
-  width: 100%;
+  width: 92%;
   max-height: 35px;
   font-size: 15px;
   margin: 3px;
@@ -201,4 +202,18 @@ a:hover {
 
 .text {
   text-align: center;
+}
+
+.coffeeCup {
+  width: 15px;
+  height: 15px
+}
+
+.kofi {
+  cursor: pointer;
+  color: white;
+  font-size: medium;
+  background-color: rgb(64, 17, 17) !important;
+  padding-left: 6px;
+  padding-right: 6px;
 }
