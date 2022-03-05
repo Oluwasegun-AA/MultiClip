@@ -218,7 +218,7 @@ bugReport.addEventListener('click', () => {
 });
 
 kofi.addEventListener('click', () => {
-  navigateTo('https://ko-fi.com/oluwasegun');
+  navigateTo('https://www.buymeacoffee.com/oluwasegun');
 });
 
 logo.addEventListener('click', () => {
