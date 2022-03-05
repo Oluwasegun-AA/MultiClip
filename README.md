@@ -33,7 +33,6 @@ MultiClip keeps track of changes to the clipboard by retaining a copy of all cli
 
 
 ## Features
-- [x] Trigger extension with `Cmd+M` or `Ctrl+M`
 - [x] Copy multiple files to clipboard
 - [x] Selectively paste clipboard Items
 - [x] Clipped items preview
