@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "__MSG_Name__",
   "description": "__MSG_description__",
-  "version": "0.51",
+  "version": "0.52",
   "author": "Adépòjù Olúwáségun",
   "default_locale": "en",
   "homepage_url": "https://github.com/Oluwasegun-AA/MultiClip",
@@ -45,13 +45,6 @@
   ],
   "offline_enabled": true,
   "commands": {
-    "_execute_browser_action": {
-      "suggested_key": {
-        "windows": "Ctrl+M",
-        "mac": "Command+M"
-      },
-      "description": "Toggle EasyRead"
-    },
     "add_clips": {
       "suggested_key": {
         "windows": "Ctrl+C",
